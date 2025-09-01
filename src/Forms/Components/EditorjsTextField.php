@@ -5,17 +5,13 @@ namespace Athphane\FilamentEditorjs\Forms\Components;
 use Athphane\FilamentEditorjs\Forms\Concerns\HasHeight;
 use Athphane\FilamentEditorjs\Forms\Concerns\HasTools;
 use Athphane\FilamentEditorjs\Traits\ModelHasEditorJsComponent;
-use Closure;
 use Filament\Forms\Components\Concerns\HasFileAttachments;
 use Filament\Forms\Components\Field;
 use Filament\Support\Concerns\HasPlaceholder;
-use Illuminate\Filesystem\FilesystemAdapter;
-use League\Flysystem\UnableToCheckFileExistence;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Throwable;
 
 class EditorjsTextField extends Field implements \Filament\Forms\Components\Contracts\HasFileAttachments
 {
@@ -61,14 +57,14 @@ class EditorjsTextField extends Field implements \Filament\Forms\Components\Cont
     {
         $media = Media::where('uuid', $file)->first();
 
-        if (!$media) {
+        if (! $media) {
             return null;
         }
 
         // Return a JSON string with both URL and ID
         return json_encode([
             'url' => $media->getUrl('preview'),
-            'id' => $media->id
+            'id'  => $media->id,
         ]);
     }
 }
