@@ -2,6 +2,7 @@
 
 namespace Athphane\FilamentEditorjs\Traits;
 
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Spatie\Image\Enums\Fit;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
@@ -46,6 +47,11 @@ trait ModelHasEditorJsComponent
     {
         return $this->addMediaFromRequest('image', $request)
             ->toMediaCollection($this->editorjsMediaCollectionName());
+    }
+
+    public function editJsSaveImageFromTempFile(TemporaryUploadedFile $file)
+    {
+        // TODO: Implement
     }
 
     /**
