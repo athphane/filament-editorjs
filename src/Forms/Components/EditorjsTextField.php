@@ -5,7 +5,6 @@ namespace Athphane\FilamentEditorjs\Forms\Components;
 use Athphane\FilamentEditorjs\Forms\Concerns\HasHeight;
 use Athphane\FilamentEditorjs\Forms\Concerns\HasTools;
 use Athphane\FilamentEditorjs\Traits\ModelHasEditorJsComponent;
-use Closure;
 use Filament\Forms\Components\Concerns\HasFileAttachments;
 use Filament\Forms\Components\Field;
 use Filament\Support\Concerns\HasPlaceholder;
