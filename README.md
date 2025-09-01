@@ -180,33 +180,13 @@ public static function form(Form $form): Form
 }
 ```
 
-#### Configuring axios to successfully upload images
-This package comes with some javascript code that will upload the image to the server. 
-Usually you would have something like this in your `boostrap.js` file:
+#### Handling image uploads
 
-```js
-import axios from 'axios';
-
-window.axios = axios;
-
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-```
-
-This piece of javascript code, as far as I know, allows frontend code to upload files to the Laravel backend. 
-Something to do with CSRF protection.
-
-Because of this, you will need to define the following Filament Render hook in your application's `AppServiceProvider`;
-
-```php
-FilamentView::registerRenderHook(
-    PanelsRenderHook::HEAD_END,
-    fn(): string => Blade::render('@vite(\'resources/js/app.js\')'),
-);
-```
-
-> This also assumes that you have set up your project's vite configuration correctly.
-
-> We're using the app.js file cause the bootstrap.js file is simply included in the app.js file. 
+Starting with version 2, `EditorjsTextField` relies on Filament's
+`HasFileAttachments` to manage image uploads through Livewire. This means
+uploads work out of the box—no custom endpoints or Axios configuration are
+required. The component will automatically upload the image and resolve the
+stored media's preview URL and ID.
 
 ## Testing
 
