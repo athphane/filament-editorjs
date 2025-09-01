@@ -38,20 +38,17 @@ trait ModelHasEditorJsComponent
     }
 
     /**
-     * Method called from the controller to save the image from the request
+     * Method to save the TemporaryUploadedFile to the media collection for the editorjs images
      *
      * @throws FileDoesNotExist
      * @throws FileIsTooBig
      */
-    public function editorJsSaveImageFromRequest($request): Media
-    {
-        return $this->addMediaFromRequest('image', $request)
-            ->toMediaCollection($this->editorjsMediaCollectionName());
-    }
-
     public function editJsSaveImageFromTempFile(TemporaryUploadedFile $file)
     {
-        // TODO: Implement
+        return $this
+            ->addMedia($file->getRealPath())
+            ->usingFileName($file->getClientOriginalName())
+            ->toMediaCollection($this->editorjsMediaCollectionName());
     }
 
     /**
@@ -63,7 +60,7 @@ trait ModelHasEditorJsComponent
      */
     public function registerEditorJsMediaCollections(?array $mime_types = null, bool $generate_responsive_images = true): void
     {
-        if (! $mime_types) {
+        if (!$mime_types) {
             $mime_types = config('filament-editorjs.image_mime_types');
         }
 

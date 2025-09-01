@@ -39,14 +39,7 @@ document.addEventListener("alpine:init", () => {
                                     try {
                                         const result = await uploadByFileUsing(file);
                                         if (result.success) {
-                                            return {
-                                                success: 1,
-                                                file: {
-                                                    url: result.file.url,
-                                                    ...(result.file.name && { name: result.file.name }),
-                                                    ...(result.file.size && { size: result.file.size })
-                                                }
-                                            };
+                                            return result;
                                         } else {
                                             return {
                                                 success: 0
