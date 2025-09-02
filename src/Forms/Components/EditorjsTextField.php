@@ -57,7 +57,7 @@ class EditorjsTextField extends Field implements \Filament\Forms\Components\Cont
     {
         $media = Media::where('uuid', $file)->first();
 
-        if (! $media) {
+        if ( ! $media) {
             return null;
         }
 
