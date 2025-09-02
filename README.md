@@ -190,9 +190,31 @@ stored media's preview URL and ID.
 
 ## Testing
 
+The package includes comprehensive tests for all major functionality:
+
 ```bash
 composer test
 ```
+
+### Test Coverage
+
+The tests cover:
+- Basic instantiation of the EditorjsTextField component
+- Configuration options (tools, height, placeholder)
+- Trait functionality (HasHeight, HasTools)
+- Model trait functionality (ModelHasEditorJsComponent)
+- Service provider configuration
+- Configuration file validation
+- Tool profile verification
+- Livewire component rendering and interaction
+- File attachment interface implementation
+- Form integration and validation
+
+All tests can be found in the `tests` directory, organized by type:
+- Feature tests for the main EditorjsTextField component
+- Configuration tests for verifying package settings
+- Unit tests for each trait and component
+- Livewire tests for component behavior and file attachment functionality
 
 ## Changelog
 

@@ -34,7 +34,7 @@ class EditorjsTextField extends Field implements \Filament\Forms\Components\Cont
         return $instance;
     }
 
-    public function recordExists(): true
+    public function recordExists(): bool
     {
         return $this->getRecord() !== null;
     }
