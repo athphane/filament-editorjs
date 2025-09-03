@@ -28,7 +28,6 @@ class FilamentEditorjsServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package->name(static::$name)
-            ->hasRoutes($this->getRoutes())
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->publishConfigFile()
@@ -48,7 +47,9 @@ class FilamentEditorjsServiceProvider extends PackageServiceProvider
         }
     }
 
-    public function packageRegistered(): void {}
+    public function packageRegistered(): void
+    {
+    }
 
     public function packageBooted(): void
     {
@@ -68,7 +69,7 @@ class FilamentEditorjsServiceProvider extends PackageServiceProvider
 
         // Handle Stubs
         if (app()->runningInConsole()) {
-            foreach (app(Filesystem::class)->files(__DIR__.'/../stubs/') as $file) {
+            foreach (app(Filesystem::class)->files(__DIR__ . '/../stubs/') as $file) {
                 $this->publishes([
                     $file->getRealPath() => base_path("stubs/filament-editorjs/{$file->getFilename()}"),
                 ], 'filament-editorjs-stubs');
@@ -91,8 +92,8 @@ class FilamentEditorjsServiceProvider extends PackageServiceProvider
     {
         return [
             // AlpineComponent::make('filament-editorjs', __DIR__ . '/../resources/dist/components/filament-editorjs.js'),
-            Css::make('filament-editorjs-styles', __DIR__.'/../resources/dist/filament-editorjs.css'),
-            Js::make('filament-editorjs-scripts', __DIR__.'/../resources/dist/filament-editorjs.js'),
+            Css::make('filament-editorjs-styles', __DIR__ . '/../resources/dist/filament-editorjs.css'),
+            Js::make('filament-editorjs-scripts', __DIR__ . '/../resources/dist/filament-editorjs.js'),
         ];
     }
 
@@ -102,16 +103,6 @@ class FilamentEditorjsServiceProvider extends PackageServiceProvider
     protected function getIcons(): array
     {
         return [];
-    }
-
-    /**
-     * @return array<string>
-     */
-    protected function getRoutes(): array
-    {
-        return [
-            'filament-editorjs',
-        ];
     }
 
     /**
