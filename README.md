@@ -180,39 +180,41 @@ public static function form(Form $form): Form
 }
 ```
 
-#### Configuring axios to successfully upload images
-This package comes with some javascript code that will upload the image to the server. 
-Usually you would have something like this in your `boostrap.js` file:
+#### Handling image uploads
 
-```js
-import axios from 'axios';
-
-window.axios = axios;
-
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-```
-
-This piece of javascript code, as far as I know, allows frontend code to upload files to the Laravel backend. 
-Something to do with CSRF protection.
-
-Because of this, you will need to define the following Filament Render hook in your application's `AppServiceProvider`;
-
-```php
-FilamentView::registerRenderHook(
-    PanelsRenderHook::HEAD_END,
-    fn(): string => Blade::render('@vite(\'resources/js/app.js\')'),
-);
-```
-
-> This also assumes that you have set up your project's vite configuration correctly.
-
-> We're using the app.js file cause the bootstrap.js file is simply included in the app.js file. 
+Starting with version 2, `EditorjsTextField` relies on Filament's
+`HasFileAttachments` to manage image uploads through Livewire. This means
+uploads work out of the box—no custom endpoints or Axios configuration are
+required. The component will automatically upload the image and resolve the
+stored media's preview URL and ID.
 
 ## Testing
+
+The package includes comprehensive tests for all major functionality:
 
 ```bash
 composer test
 ```
+
+### Test Coverage
+
+The tests cover:
+- Basic instantiation of the EditorjsTextField component
+- Configuration options (tools, height, placeholder)
+- Trait functionality (HasHeight, HasTools)
+- Model trait functionality (ModelHasEditorJsComponent)
+- Service provider configuration
+- Configuration file validation
+- Tool profile verification
+- Livewire component rendering and interaction
+- File attachment interface implementation
+- Form integration and validation
+
+All tests can be found in the `tests` directory, organized by type:
+- Feature tests for the main EditorjsTextField component
+- Configuration tests for verifying package settings
+- Unit tests for each trait and component
+- Livewire tests for component behavior and file attachment functionality
 
 ## Changelog
 

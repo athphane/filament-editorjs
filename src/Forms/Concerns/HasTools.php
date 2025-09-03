@@ -44,7 +44,7 @@ trait HasTools
      */
     public function tools(string $tool_profile): static
     {
-        $this->tools = config('filament-editorjs.profiles.'.$tool_profile);
+        $this->tools = config('filament-editorjs.profiles.' . $tool_profile);
 
         return $this;
     }

@@ -60,7 +60,7 @@ trait ModelHasEditorJsComponent
      */
     public function registerEditorJsMediaCollections(?array $mime_types = null, bool $generate_responsive_images = true): void
     {
-        if (!$mime_types) {
+        if ( ! $mime_types) {
             $mime_types = config('filament-editorjs.image_mime_types');
         }
 

@@ -77,7 +77,7 @@ class FilamentEditorjsServiceProvider extends PackageServiceProvider
         }
 
         // Testing
-        Testable::mixin(new TestsFilamentEditorjs);
+        Testable::mixin(new TestsFilamentEditorjs());
     }
 
     protected function getAssetPackageName(): ?string

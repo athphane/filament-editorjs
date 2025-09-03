@@ -14,6 +14,7 @@ use Filament\Support\SupportServiceProvider;
 use Filament\Tables\TablesServiceProvider;
 use Filament\Widgets\WidgetsServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
@@ -25,7 +26,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Athphane\\FilamentEditorjs\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'Athphane\\FilamentEditorjs\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
         );
     }
 
@@ -52,9 +53,18 @@ class TestCase extends Orchestra
     {
         config()->set('database.default', 'testing');
 
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_filament-editorjs_table.php.stub';
-        $migration->up();
-        */
+        // Set up filesystem for testing
+        config()->set('filesystems.disks.public', [
+            'driver'     => 'local',
+            'root'       => storage_path('app/public'),
+            'url'        => env('APP_URL') . '/storage',
+            'visibility' => 'public',
+        ]);
+
+        // Set up media library for testing
+        config()->set('media-library.disk_name', 'public');
+
+        // Set up app key for encryption
+        config()->set('app.key', Str::random(32));
     }
 }
