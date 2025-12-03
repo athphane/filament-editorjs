@@ -21,8 +21,9 @@
     ],
     "require": {
         "php": "^8.3",
-        "filament/filament": "^3.3",
-        "filament/spatie-laravel-media-library-plugin": "^v3.3"
+        "filament/filament": "^4.0",
+        "filament/forms": "^4.0",
+        "filament/spatie-laravel-media-library-plugin": "^v4.0"
     },
     "require-dev": {
         "larastan/larastan": "^2.11",

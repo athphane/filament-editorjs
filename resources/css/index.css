@@ -10,7 +10,7 @@
 }
 
 .codex-editor__redactor {
-    @apply px-3 py-4 !important;
+    @apply px-3 py-4 ;
 }
 
 .cdx-search-field {
@@ -88,7 +88,7 @@
 List Item style
 */
 .cdx-list {
-    @apply pl-[1rem] !important;
+    @apply pl-[1rem] ;
 }
 
 /*
@@ -123,5 +123,5 @@ Actions alignment
 */
 .ce-toolbar__actions {
     right: inherit;
-    @apply pr-0 pl-[6px] pt-[1px] !important;
+    @apply pr-0 pl-[6px] pt-[1px] ;
 }
