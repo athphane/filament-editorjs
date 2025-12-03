@@ -7,6 +7,7 @@ use Filament\Support\Facades\FilamentAsset;
 trait HasTools
 {
     protected array $tools = [];
+
     protected array $pluginUrls = [];
 
     /**
@@ -32,8 +33,8 @@ trait HasTools
     /**
      * Add a custom tool with optional configuration.
      *
-     * @param string $key The key used in window.filamentEditorJsTools
-     * @param array $config Configuration array to pass to the JS tool
+     * @param  string  $key  The key used in window.filamentEditorJsTools
+     * @param  array  $config  Configuration array to pass to the JS tool
      */
     public function addTool(string $key, array $config = []): static
     {
@@ -85,9 +86,9 @@ trait HasTools
     /**
      * Register a custom plugin by its Filament Asset ID.
      *
-     * @param string $key The tool key (e.g., 'highlight')
-     * @param string $assetId The asset name registered in AppServiceProvider
-     * @param array $config Configuration for the tool
+     * @param  string  $key  The tool key (e.g., 'highlight')
+     * @param  string  $assetId  The asset name registered in AppServiceProvider
+     * @param  array  $config  Configuration for the tool
      */
     public function addPlugin(string $key, string $assetId, array $config = []): static
     {

@@ -5,12 +5,14 @@ namespace Athphane\FilamentEditorjs\Forms\Components;
 use Athphane\FilamentEditorjs\Forms\Concerns\HasHeight;
 use Athphane\FilamentEditorjs\Forms\Concerns\HasTools;
 use Athphane\FilamentEditorjs\Traits\ModelHasEditorJsComponent;
+use Exception;
 use Filament\Forms\Components\Concerns\HasFileAttachments;
 use Filament\Forms\Components\Field;
 use Filament\Support\Components\Attributes\ExposedLivewireMethod;
 use Filament\Support\Concerns\HasPlaceholder;
 use Livewire\Attributes\Renderless;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
+use Log;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -26,7 +28,7 @@ class EditorjsTextField extends Field
 
     protected ?int $mediaId = null;
 
-    public static function make(string $name = null): static
+    public static function make(?string $name = null): static
     {
         $instance = parent::make($name);
 
@@ -61,12 +63,12 @@ class EditorjsTextField extends Field
     {
         $media = Media::where('uuid', $file)->first();
 
-        if (!$media) {
+        if ( ! $media) {
             // Try to find media by ID if $file is an ID instead of UUID
             $media = Media::find($file);
         }
 
-        if (!$media) {
+        if ( ! $media) {
             return null;
         }
 
@@ -75,7 +77,7 @@ class EditorjsTextField extends Field
             $url = $media->hasGeneratedConversion('preview')
                 ? $media->getUrl('preview')
                 : $media->getUrl();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             // If there's an issue with the conversion, return the original URL
             $url = $media->getUrl();
         }
@@ -95,21 +97,22 @@ class EditorjsTextField extends Field
             // In Livewire, we can get the TemporaryUploadedFile using createFromLivewire
             $tempFile = TemporaryUploadedFile::createFromLivewire($tempFileIdentifier);
 
-            if (!$tempFile instanceof TemporaryUploadedFile) {
+            if ( ! $tempFile instanceof TemporaryUploadedFile) {
                 return null;
             }
 
             // Process the temporary file to get UUID using existing method
             $uuid = $this->handleFileAttachmentUpload($tempFile);
 
-            if (!$uuid) {
+            if ( ! $uuid) {
                 return null;
             }
 
             // Now retrieve the media data using the UUID
             return $this->handleUploadedAttachmentUrlRetrieval($uuid);
-        } catch (\Exception $e) {
-            \Log::error('Error processing uploaded file: ' . $e->getMessage());
+        } catch (Exception $e) {
+            Log::error('Error processing uploaded file: ' . $e->getMessage());
+
             return null;
         }
     }
