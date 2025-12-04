@@ -116,9 +116,4 @@ class EditorjsTextField extends Field
             return null;
         }
     }
-
-    public function someMethod()
-    {
-        return 'something';
-    }
 }

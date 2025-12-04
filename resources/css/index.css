@@ -10,7 +10,7 @@
 }
 
 .codex-editor__redactor {
-    @apply px-3 py-4 ;
+    @apply px-3 py-4;
 }
 
 .cdx-search-field {
@@ -19,7 +19,8 @@
 
 .ce-block__content,
 .ce-toolbar__content {
-    max-width: unset; /* example value, adjust for your own use case */
+    max-width: unset;
+    /* example value, adjust for your own use case */
 }
 
 .ce-toolbar__plus,
@@ -88,7 +89,7 @@
 List Item style
 */
 .cdx-list {
-    @apply pl-[1rem] ;
+    @apply pl-[1rem];
 }
 
 /*
@@ -123,5 +124,5 @@ Actions alignment
 */
 .ce-toolbar__actions {
     right: inherit;
-    @apply pr-0 pl-[6px] pt-[1px] ;
+    @apply pr-0 pl-[6px] pt-[1px];
 }

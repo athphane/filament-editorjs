@@ -85,7 +85,7 @@ class FilamentEditorjsServiceProvider extends PackageServiceProvider
     {
         return [
             // AlpineComponent::make('filament-editorjs', __DIR__ . '/../resources/dist/components/filament-editorjs.js'),
-            // Css::make('filament-editorjs-styles', __DIR__ . '/../resources/dist/filament-editorjs.css'),
+            Css::make('filament-editorjs-styles', __DIR__ . '/../resources/dist/filament-editorjs.css'),
             Js::make('filament-editorjs-scripts', __DIR__ . '/../resources/dist/filament-editorjs.js'),
         ];
     }
