@@ -68,8 +68,7 @@ class FilamentEditorjsServiceProvider extends PackageServiceProvider
         }
 
         $this->publishes([
-            __DIR__ . '/../resources/js/filament-editorjs-extensions.stub.js' =>
-                resource_path('js/filament-editorjs-extensions.js'),
+            __DIR__ . '/../resources/js/filament-editorjs-extensions.stub.js' => resource_path('js/filament-editorjs-extensions.js'),
         ], 'filament-editorjs-extensions');
     }
 
