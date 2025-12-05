@@ -2,14 +2,12 @@
 
 namespace Athphane\FilamentEditorjs;
 
-use Athphane\FilamentEditorjs\Testing\TestsFilamentEditorjs;
 use Filament\Support\Assets\Asset;
 use Filament\Support\Assets\Css;
 use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentIcon;
 use Illuminate\Filesystem\Filesystem;
-use Livewire\Features\SupportTesting\Testable;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -22,11 +20,6 @@ class FilamentEditorjsServiceProvider extends PackageServiceProvider
 
     public function configurePackage(Package $package): void
     {
-        /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
-         */
         $package->name(static::$name)
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
@@ -74,8 +67,9 @@ class FilamentEditorjsServiceProvider extends PackageServiceProvider
             }
         }
 
-        // Testing
-        Testable::mixin(new TestsFilamentEditorjs());
+        $this->publishes([
+            __DIR__ . '/../resources/js/filament-editorjs-extensions.stub.js' => resource_path('js/filament-editorjs-extensions.js'),
+        ], 'filament-editorjs-extensions');
     }
 
     protected function getAssetPackageName(): ?string

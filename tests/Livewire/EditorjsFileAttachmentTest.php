@@ -9,7 +9,7 @@ it('verifies editorjs text field implements file attachments', function () {
     $field = EditorjsTextField::make('content');
 
     // Check that the field implements the HasFileAttachments contract
-    expect($field)->toBeInstanceOf(Filament\Forms\Components\Contracts\HasFileAttachments::class);
+    expect($field)->toBeInstanceOf(Filament\Forms\Components\Concerns\HasFileAttachments::class);
 
     // Check that the field uses the HasFileAttachments trait
     expect(method_exists($field, 'handleFileAttachmentUpload'))->toBeTrue();

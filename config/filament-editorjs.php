@@ -9,11 +9,12 @@ return [
     'profiles' => [
         'default' => [
             'header', 'image', 'delimiter', 'list', 'underline', 'quote', 'table',
+            'raw', 'code', 'inline-code', 'style', 'checklist',
         ],
-        'pro' => [
-            'header', 'image', 'delimiter', 'list', 'underline', 'quote', 'table',
-            'raw', 'code', 'inline-code', 'style',
-        ],
+        // 'pro' => [
+        //     'header', 'image', 'delimiter', 'list', 'underline', 'quote', 'table',
+        //     'raw', 'code', 'inline-code', 'style',
+        // ],
     ],
 
     /**
