@@ -14,9 +14,9 @@ class ListRenderer extends BlockRenderer
         $escapedItems = array_map([$this, 'escape'], $items);
 
         return view('filament-editorjs::renderers.list', [
-            'items' => $escapedItems,
-            'style' => $style,
-            'config' => $this->config
+            'items'  => $escapedItems,
+            'style'  => $style,
+            'config' => $this->config,
         ])->render();
     }
 

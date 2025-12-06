@@ -11,7 +11,7 @@ class ParagraphRenderer extends BlockRenderer
 
         return view('filament-editorjs::renderers.paragraph', [
             'content' => $content,
-            'config' => $this->config
+            'config'  => $this->config,
         ])->render();
     }
 

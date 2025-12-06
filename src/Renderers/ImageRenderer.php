@@ -19,12 +19,12 @@ class ImageRenderer extends BlockRenderer
         $caption = $this->escape($caption);
 
         return view('filament-editorjs::renderers.image', [
-            'url' => $url,
-            'caption' => $caption,
-            'withBorder' => $withBorder,
+            'url'            => $url,
+            'caption'        => $caption,
+            'withBorder'     => $withBorder,
             'withBackground' => $withBackground,
-            'stretched' => $stretched,
-            'config' => $this->config
+            'stretched'      => $stretched,
+            'config'         => $this->config,
         ])->render();
     }
 

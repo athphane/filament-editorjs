@@ -120,9 +120,7 @@ class EditorjsTextField extends Field
     /**
      * Render EditorJS content for display
      *
-     * @param string|array $content
-     * @param array $config
-     * @return string
+     * @param  string|array  $content
      */
     public static function renderContent($content, array $config = []): string
     {

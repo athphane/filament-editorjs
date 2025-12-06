@@ -7,7 +7,7 @@ class DelimiterRenderer extends BlockRenderer
     public function render(array $block): string
     {
         return view('filament-editorjs::renderers.delimiter', [
-            'config' => $this->config
+            'config' => $this->config,
         ])->render();
     }
 

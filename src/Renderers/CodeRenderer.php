@@ -13,8 +13,8 @@ class CodeRenderer extends BlockRenderer
         $escapedCode = $this->escape($code);
 
         return view('filament-editorjs::renderers.code', [
-            'code' => $escapedCode,
-            'config' => $this->config
+            'code'   => $escapedCode,
+            'config' => $this->config,
         ])->render();
     }
 

@@ -16,10 +16,10 @@ class QuoteRenderer extends BlockRenderer
         $escapedCaption = $this->escape($caption);
 
         return view('filament-editorjs::renderers.quote', [
-            'content' => $escapedContent,
-            'caption' => $escapedCaption,
+            'content'   => $escapedContent,
+            'caption'   => $escapedCaption,
             'alignment' => $alignment,
-            'config' => $this->config
+            'config'    => $this->config,
         ])->render();
     }
 

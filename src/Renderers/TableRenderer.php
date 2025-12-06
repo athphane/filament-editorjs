@@ -8,7 +8,7 @@ class TableRenderer extends BlockRenderer
     {
         $data = $block['data'] ?? [];
         $content = $data['content'] ?? [];
-        
+
         // Process the table content to escape values
         $processedContent = [];
         foreach ($content as $row) {
@@ -21,7 +21,7 @@ class TableRenderer extends BlockRenderer
 
         return view('filament-editorjs::renderers.table', [
             'content' => $processedContent,
-            'config' => $this->config
+            'config'  => $this->config,
         ])->render();
     }
 

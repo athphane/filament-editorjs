@@ -26,8 +26,8 @@ class ChecklistRenderer extends BlockRenderer
         }
 
         return view('filament-editorjs::renderers.checklist', [
-            'items' => $processedItems,
-            'config' => $this->config
+            'items'  => $processedItems,
+            'config' => $this->config,
         ])->render();
     }
 

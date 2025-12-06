@@ -77,22 +77,22 @@ class FilamentEditorjsServiceProvider extends PackageServiceProvider
     protected function registerRendererManager(): void
     {
         $this->app->singleton('filament-editorjs-renderer', function ($app) {
-            $manager = new \Athphane\FilamentEditorjs\Renderers\BlockRendererManager([
+            $manager = new Renderers\BlockRendererManager([
                 'wrapper_template' => 'filament-editorjs::renderers.content-wrapper',
             ]);
 
             // Register default renderers
-            $manager->addRenderer(new \Athphane\FilamentEditorjs\Renderers\HeaderRenderer());
-            $manager->addRenderer(new \Athphane\FilamentEditorjs\Renderers\ImageRenderer());
-            $manager->addRenderer(new \Athphane\FilamentEditorjs\Renderers\ListRenderer());
-            $manager->addRenderer(new \Athphane\FilamentEditorjs\Renderers\ParagraphRenderer());
-            $manager->addRenderer(new \Athphane\FilamentEditorjs\Renderers\QuoteRenderer());
-            $manager->addRenderer(new \Athphane\FilamentEditorjs\Renderers\CodeRenderer());
-            $manager->addRenderer(new \Athphane\FilamentEditorjs\Renderers\TableRenderer());
-            $manager->addRenderer(new \Athphane\FilamentEditorjs\Renderers\DelimiterRenderer());
-            $manager->addRenderer(new \Athphane\FilamentEditorjs\Renderers\RawRenderer());
-            $manager->addRenderer(new \Athphane\FilamentEditorjs\Renderers\InlineCodeRenderer());
-            $manager->addRenderer(new \Athphane\FilamentEditorjs\Renderers\ChecklistRenderer());
+            $manager->addRenderer(new Renderers\HeaderRenderer());
+            $manager->addRenderer(new Renderers\ImageRenderer());
+            $manager->addRenderer(new Renderers\ListRenderer());
+            $manager->addRenderer(new Renderers\ParagraphRenderer());
+            $manager->addRenderer(new Renderers\QuoteRenderer());
+            $manager->addRenderer(new Renderers\CodeRenderer());
+            $manager->addRenderer(new Renderers\TableRenderer());
+            $manager->addRenderer(new Renderers\DelimiterRenderer());
+            $manager->addRenderer(new Renderers\RawRenderer());
+            $manager->addRenderer(new Renderers\InlineCodeRenderer());
+            $manager->addRenderer(new Renderers\ChecklistRenderer());
 
             return $manager;
         });

@@ -17,9 +17,9 @@ class HeaderRenderer extends BlockRenderer
         $escapedText = $this->escape($text);
 
         return view('filament-editorjs::renderers.header', [
-            'level' => $level,
-            'text' => $escapedText,
-            'config' => $this->config
+            'level'  => $level,
+            'text'   => $escapedText,
+            'config' => $this->config,
         ])->render();
     }
 

@@ -2,8 +2,6 @@
 
 namespace Athphane\FilamentEditorjs\Forms\Concerns;
 
-use Filament\Support\Facades\FilamentAsset;
-
 trait HasTools
 {
     protected array $tools = [];

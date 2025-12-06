@@ -9,13 +9,12 @@ class FilamentEditorjs
     /**
      * Render EditorJS content for display
      *
-     * @param string|array $content
-     * @param array $config
-     * @return string
+     * @param  string|array  $content
      */
     public static function renderContent($content, array $config = []): string
     {
         $manager = app('filament-editorjs-renderer');
+
         return $manager->renderContent($content, $config);
     }
 

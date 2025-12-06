@@ -14,8 +14,8 @@ class RawRenderer extends BlockRenderer
         $escapedHtml = $this->escape($html);
 
         return view('filament-editorjs::renderers.raw', [
-            'html' => $escapedHtml,
-            'config' => $this->config
+            'html'   => $escapedHtml,
+            'config' => $this->config,
         ])->render();
     }
 
