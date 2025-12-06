@@ -70,6 +70,32 @@ class FilamentEditorjsServiceProvider extends PackageServiceProvider
         $this->publishes([
             __DIR__ . '/../resources/js/filament-editorjs-extensions.stub.js' => resource_path('js/filament-editorjs-extensions.js'),
         ], 'filament-editorjs-extensions');
+
+        $this->registerRendererManager();
+    }
+
+    protected function registerRendererManager(): void
+    {
+        $this->app->singleton('filament-editorjs-renderer', function ($app) {
+            $manager = new \Athphane\FilamentEditorjs\Renderers\BlockRendererManager([
+                'wrapper_template' => 'filament-editorjs::renderers.content-wrapper',
+            ]);
+
+            // Register default renderers
+            $manager->addRenderer(new \Athphane\FilamentEditorjs\Renderers\HeaderRenderer());
+            $manager->addRenderer(new \Athphane\FilamentEditorjs\Renderers\ImageRenderer());
+            $manager->addRenderer(new \Athphane\FilamentEditorjs\Renderers\ListRenderer());
+            $manager->addRenderer(new \Athphane\FilamentEditorjs\Renderers\ParagraphRenderer());
+            $manager->addRenderer(new \Athphane\FilamentEditorjs\Renderers\QuoteRenderer());
+            $manager->addRenderer(new \Athphane\FilamentEditorjs\Renderers\CodeRenderer());
+            $manager->addRenderer(new \Athphane\FilamentEditorjs\Renderers\TableRenderer());
+            $manager->addRenderer(new \Athphane\FilamentEditorjs\Renderers\DelimiterRenderer());
+            $manager->addRenderer(new \Athphane\FilamentEditorjs\Renderers\RawRenderer());
+            $manager->addRenderer(new \Athphane\FilamentEditorjs\Renderers\InlineCodeRenderer());
+            $manager->addRenderer(new \Athphane\FilamentEditorjs\Renderers\ChecklistRenderer());
+
+            return $manager;
+        });
     }
 
     protected function getAssetPackageName(): ?string

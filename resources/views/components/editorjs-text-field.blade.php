@@ -23,8 +23,7 @@
                 componentKey: @js($key),
                 imageMimeTypes: @js(config('filament-editorjs.image_mime_types')),
                 maxSize: 5242880,
-                canUpload: @js($recordExists()),
-                pluginUrls: @js($getPluginUrls())
+                canUpload: @js($recordExists())
             })"
         >
         </div>

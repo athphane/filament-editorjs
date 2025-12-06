@@ -116,4 +116,16 @@ class EditorjsTextField extends Field
             return null;
         }
     }
+
+    /**
+     * Render EditorJS content for display
+     *
+     * @param string|array $content
+     * @param array $config
+     * @return string
+     */
+    public static function renderContent($content, array $config = []): string
+    {
+        return \Athphane\FilamentEditorjs\FilamentEditorjs::renderContent($content, $config);
+    }
 }

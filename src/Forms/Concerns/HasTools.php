@@ -87,17 +87,12 @@ trait HasTools
      * Register a custom plugin by its Filament Asset ID.
      *
      * @param  string  $key  The tool key (e.g., 'highlight')
-     * @param  string  $assetId  The asset name registered in AppServiceProvider
      * @param  array  $config  Configuration for the tool
      */
-    public function addPlugin(string $key, string $assetId, array $config = []): static
+    public function addPlugin(string $key, array $config = []): static
     {
         // 1. Add the tool config
         $this->tools[$key] = $config;
-
-        // 2. Resolve the asset URL
-        // We defer this so it happens at render time, ensuring assets are registered
-        $this->pluginUrls[] = FilamentAsset::getScriptSrc($assetId);
 
         return $this;
     }
