@@ -18,7 +18,7 @@ it('verifies tool profiles from config', function () {
     $defaultField = EditorjsTextField::make('content')
         ->tools('default');
 
-    $defaultTools = $defaultField->getTools();
+    $defaultTools = array_keys($defaultField->getTools());
     expect($defaultTools)->toContain('header');
     expect($defaultTools)->toContain('image');
     expect($defaultTools)->toContain('delimiter');
@@ -31,7 +31,7 @@ it('verifies tool profiles from config', function () {
     $proField = EditorjsTextField::make('content')
         ->tools('pro');
 
-    $proTools = $proField->getTools();
+    $proTools = array_keys($proField->getTools());
     expect($proTools)->toContain('raw');
     expect($proTools)->toContain('code');
     expect($proTools)->toContain('inline-code');

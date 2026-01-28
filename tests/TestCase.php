@@ -10,6 +10,9 @@ use Filament\FilamentServiceProvider;
 use Filament\Forms\FormsServiceProvider;
 use Filament\Infolists\InfolistsServiceProvider;
 use Filament\Notifications\NotificationsServiceProvider;
+use Filament\Pages\Page;
+use Filament\Panel;
+use Filament\PanelProvider;
 use Filament\Support\SupportServiceProvider;
 use Filament\Tables\TablesServiceProvider;
 use Filament\Widgets\WidgetsServiceProvider;
@@ -46,6 +49,7 @@ class TestCase extends Orchestra
             TablesServiceProvider::class,
             WidgetsServiceProvider::class,
             FilamentEditorjsServiceProvider::class,
+            TestPanelProvider::class,
         ];
     }
 
@@ -66,5 +70,15 @@ class TestCase extends Orchestra
 
         // Set up app key for encryption
         config()->set('app.key', Str::random(32));
+    }
+}
+
+class TestPanelProvider extends PanelProvider
+{
+    public function panel(Panel $panel): Panel
+    {
+        return $panel
+            ->id('admin')
+            ->default();
     }
 }

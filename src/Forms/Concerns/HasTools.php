@@ -16,16 +16,7 @@ trait HasTools
      */
     public function setDefaultTools(): static
     {
-        // Transform the config array of strings into an associative array with empty config
-        $defaults = config('filament-editorjs.profiles.' . config('filament-editorjs.default_profile'));
-
-        $this->tools = []; // Reset
-
-        foreach ($defaults as $tool) {
-            $this->tools[$tool] = []; // No specific config by default
-        }
-
-        return $this;
+        return $this->tools(config('filament-editorjs.default_profile', 'default'));
     }
 
     /**
@@ -68,7 +59,17 @@ trait HasTools
      */
     public function tools(string $tool_profile): static
     {
-        $this->tools = config('filament-editorjs.profiles.' . $tool_profile);
+        $profile = (array) config("filament-editorjs.profiles.{$tool_profile}", []);
+
+        $this->tools = [];
+
+        foreach ($profile as $key => $value) {
+            if (is_int($key)) {
+                $this->tools[$value] = [];
+            } else {
+                $this->tools[$key] = $value;
+            }
+        }
 
         return $this;
     }

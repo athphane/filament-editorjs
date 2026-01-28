@@ -40,7 +40,10 @@ class FilamentEditorjsServiceProvider extends PackageServiceProvider
         }
     }
 
-    public function packageRegistered(): void {}
+    public function packageRegistered(): void
+    {
+        $this->registerRendererManager();
+    }
 
     public function packageBooted(): void
     {
@@ -70,8 +73,6 @@ class FilamentEditorjsServiceProvider extends PackageServiceProvider
         $this->publishes([
             __DIR__ . '/../resources/js/filament-editorjs-extensions.stub.js' => resource_path('js/filament-editorjs-extensions.js'),
         ], 'filament-editorjs-extensions');
-
-        $this->registerRendererManager();
     }
 
     protected function registerRendererManager(): void
@@ -109,7 +110,6 @@ class FilamentEditorjsServiceProvider extends PackageServiceProvider
     protected function getAssets(): array
     {
         return [
-            // AlpineComponent::make('filament-editorjs', __DIR__ . '/../resources/dist/components/filament-editorjs.js'),
             Css::make('filament-editorjs-styles', __DIR__ . '/../resources/dist/filament-editorjs.css'),
             Js::make('filament-editorjs-scripts', __DIR__ . '/../resources/dist/filament-editorjs.js'),
         ];
