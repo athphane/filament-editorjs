@@ -6,8 +6,8 @@ use Athphane\FilamentEditorjs\Forms\Components\EditorjsTextField;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
-use Livewire\Component;
 use Livewire\Attributes\Rule;
+use Livewire\Component;
 
 class TestEditorjsComponent extends Component implements HasForms
 {
