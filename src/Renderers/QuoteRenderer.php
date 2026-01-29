@@ -4,22 +4,18 @@ namespace Athphane\FilamentEditorjs\Renderers;
 
 class QuoteRenderer extends BlockRenderer
 {
-    public function render(array $block): string
+    public function render(array $block, array $config = []): string
     {
         $data = $block['data'] ?? [];
-        $content = $data['message'] ?? $data['content'] ?? '';
+        $content = $data['message'] ?? $data['content'] ?? $data['text'] ?? '';
         $caption = $data['caption'] ?? '';
         $alignment = $data['alignment'] ?? 'left';
 
-        // Escape content to prevent XSS
-        $escapedContent = $this->escape($content);
-        $escapedCaption = $this->escape($caption);
-
         return view('filament-editorjs::renderers.quote', [
-            'content'   => $escapedContent,
-            'caption'   => $escapedCaption,
+            'content'   => $content,
+            'caption'   => $caption,
             'alignment' => $alignment,
-            'config'    => $this->config,
+            'config'    => array_merge($this->config, $config),
         ])->render();
     }
 

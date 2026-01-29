@@ -2,22 +2,23 @@
     $content = $content ?? '';
     $caption = $caption ?? '';
     $alignment = $alignment ?? 'left';
-    $config = $config ?? [];
 
     $alignmentClasses = [
-        'center' => 'text-center border-l-0 border-r-0 justify-center',
-        'right' => 'text-right border-l-0 border-r-4 justify-end',
-    ][$alignment] ?? 'text-left border-l-4 border-r-0'; // Default to left
-
-    $containerClasses = "my-6 p-4 italic bg-gray-50 border-t border-b border-gray-200 {$alignmentClasses}";
+        'left' => 'text-left border-l-4',
+        'center' => 'text-center border-y-2 py-4',
+        'right' => 'text-right border-r-4',
+    ][$alignment] ?? 'text-left border-l-4';
 @endphp
 
-<div class="{{ $containerClasses }}">
-    <blockquote class="text-gray-700">
-        "{{ $content }}"
-    </blockquote>
+<blockquote
+    class="my-8 pl-4 border-gray-300 dark:border-gray-700 italic text-xl text-gray-700 dark:text-gray-300 {{ $alignmentClasses }}">
+    <p class="mb-2">
+        {!! $content !!}
+    </p>
 
     @if($caption)
-        <cite class="block mt-2 text-sm text-gray-500 not-italic">— {{ $caption }}</cite>
+        <cite class="text-sm font-normal text-gray-500 block">
+            — {{ $caption }}
+        </cite>
     @endif
-</div>
+</blockquote>

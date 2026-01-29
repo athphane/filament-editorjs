@@ -1,6 +1,6 @@
 @php
     $code = $code ?? '';
-    $config = $config ?? [];
 @endphp
 
-<pre class="my-4 p-4 bg-gray-800 text-gray-100 rounded overflow-x-auto"><code class="language-unknown">{{ $code }}</code></pre>
+<pre
+    class="bg-gray-100 dark:bg-gray-900 p-4 rounded-lg overflow-x-auto my-6 border border-gray-200 dark:border-gray-800"><code class="text-gray-800 dark:text-gray-200 font-mono text-sm leading-relaxed">{{ $code }}</code></pre>

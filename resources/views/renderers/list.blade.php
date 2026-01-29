@@ -1,16 +1,13 @@
 @php
     $items = $items ?? [];
-    $style = $style ?? 'unordered'; // 'ordered' or 'unordered'
-    $config = $config ?? [];
+    $style = $style ?? 'unordered';
 
-    $listTag = $style === 'ordered' ? 'ol' : 'ul';
-    $listClasses = $style === 'ordered'
-        ? 'list-decimal list-inside my-4 pl-4 space-y-2'
-        : 'list-disc list-inside my-4 pl-4 space-y-2';
+    $tag = ($style === 'ordered') ? 'ol' : 'ul';
+    $listClasses = $tag === 'ol' ? 'list-decimal ml-6' : 'list-disc ml-6';
 @endphp
 
-<{{ $listTag }} class="{{ $listClasses }}">
+<{{ $tag }} class="{{ $listClasses }} mb-6 space-y-2 text-gray-800 dark:text-gray-200">
     @foreach($items as $item)
-        <li class="text-gray-700">{{ $item }}</li>
+        <li>{!! $item !!}</li>
     @endforeach
-</{{ $listTag }}>
+</{{ $tag }}>

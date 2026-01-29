@@ -15,9 +15,10 @@ abstract class BlockRenderer
      * Render the block content
      *
      * @param  array  $block  The block data from EditorJS
+     * @param  array  $config  Optional rendering configuration
      * @return string The rendered HTML
      */
-    abstract public function render(array $block): string;
+    abstract public function render(array $block, array $config = []): string;
 
     /**
      * Get the block type this renderer handles

@@ -4,10 +4,10 @@ namespace Athphane\FilamentEditorjs\Renderers;
 
 class DelimiterRenderer extends BlockRenderer
 {
-    public function render(array $block): string
+    public function render(array $block, array $config = []): string
     {
         return view('filament-editorjs::renderers.delimiter', [
-            'config' => $this->config,
+            'config' => array_merge($this->config, $config),
         ])->render();
     }
 

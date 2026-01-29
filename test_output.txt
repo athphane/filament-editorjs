@@ -1,0 +1,66 @@
+
+  [30;43;1m WARN [39;49;22m XDEBUG_MODE=coverage (environment variable) or xdebug.mode=coverage (PHP configuration setting) has to be set
+
+  [39;41;1m FAIL [39;49;22m[39m Tests\Livewire\EditorjsLivewireTest[39m
+  [31;1mΓ¿»[39;22m[90m [39m[90mit can render editorjs component[39m[90m                                 [39m [90m0.64s[39m  
+  [31;1mΓ¿»[39;22m[90m [39m[90mit can validate editorjs content[39m[90m                                 [39m [90m0.19s[39m  
+  [31;1mΓ¿»[39;22m[90m [39m[90mit can fill editorjs component with content[39m[90m                      [39m [90m0.38s[39m  
+  [33;1m-[39;22m[90m [39m[90mit can test file attachment functionality[39m[90m [39m[33mΓåÆ Full file upload tes[39m[90mΓÇª[39m [90m0.06s[39m  
+  [31mΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ[39m  
+  [41;1m FAILED [49;22m [1mTests\Livewire\EditorjsLivewireTest[22m [90m>[39m it can reΓÇª [41;1m ViewException [49;22m  
+[39;1m  Illuminate\Support\ViewErrorBag::put(): Argument #2 ($bag) must be of type Illuminate\Contracts\Support\MessageBag, null given, called in C:\Users\user\Herd\packages\filament-editorjs\vendor\livewire\livewire\src\Features\SupportValidation\SupportValidation.php on line 21 (View: C:\Users\user\Herd\packages\filament-editorjs\vendor\orchestra\testbench-core\laravel\storage\framework\views\a168b0ebcff266df6b662fc4b6d06e88.blade.php)[39;22m
+
+  at [32mvendor\laravel\framework\src\Illuminate\Support\ViewErrorBag.php[39m:[32m60[39m
+     56Γûò      * @param  string  $key
+     57Γûò      * @param  \Illuminate\Contracts\Support\MessageBag  $bag
+     58Γûò      * @return $this
+     59Γûò      */
+  Γ₧£  60Γûò     public function put($key, MessageBagContract $bag)
+     61Γûò     {
+     62Γûò         $this->bags[$key] = $bag;
+     63Γûò 
+     64Γûò         return $this;
+
+  [33m1   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\ViewErrorBag.php[39;22m:[39;1m60[39;22m
+  [33m2   [39m[39;1mvendor\livewire\livewire\src\Features\SupportValidation\SupportValidation.php[39;22m:[39;1m21[39;22m
+
+  [31mΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ[39m  
+  [41;1m FAILED [49;22m [1mTests\Livewire\EditorjsLivewireTest[22m [90m>[39m it can vaΓÇª [41;1m ViewException [49;22m  
+[39;1m  Illuminate\Support\ViewErrorBag::put(): Argument #2 ($bag) must be of type Illuminate\Contracts\Support\MessageBag, null given, called in C:\Users\user\Herd\packages\filament-editorjs\vendor\livewire\livewire\src\Features\SupportValidation\SupportValidation.php on line 21 (View: C:\Users\user\Herd\packages\filament-editorjs\vendor\orchestra\testbench-core\laravel\storage\framework\views\a168b0ebcff266df6b662fc4b6d06e88.blade.php)[39;22m
+
+  at [32mvendor\laravel\framework\src\Illuminate\Support\ViewErrorBag.php[39m:[32m60[39m
+     56Γûò      * @param  string  $key
+     57Γûò      * @param  \Illuminate\Contracts\Support\MessageBag  $bag
+     58Γûò      * @return $this
+     59Γûò      */
+  Γ₧£  60Γûò     public function put($key, MessageBagContract $bag)
+     61Γûò     {
+     62Γûò         $this->bags[$key] = $bag;
+     63Γûò 
+     64Γûò         return $this;
+
+  [33m1   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\ViewErrorBag.php[39;22m:[39;1m60[39;22m
+  [33m2   [39m[39;1mvendor\livewire\livewire\src\Features\SupportValidation\SupportValidation.php[39;22m:[39;1m21[39;22m
+
+  [31mΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ[39m  
+  [41;1m FAILED [49;22m [1mTests\Livewire\EditorjsLivewireTest[22m [90m>[39m it can fiΓÇª [41;1m ViewException [49;22m  
+[39;1m  Illuminate\Support\ViewErrorBag::put(): Argument #2 ($bag) must be of type Illuminate\Contracts\Support\MessageBag, null given, called in C:\Users\user\Herd\packages\filament-editorjs\vendor\livewire\livewire\src\Features\SupportValidation\SupportValidation.php on line 21 (View: C:\Users\user\Herd\packages\filament-editorjs\vendor\orchestra\testbench-core\laravel\storage\framework\views\a168b0ebcff266df6b662fc4b6d06e88.blade.php)[39;22m
+
+  at [32mvendor\laravel\framework\src\Illuminate\Support\ViewErrorBag.php[39m:[32m60[39m
+     56Γûò      * @param  string  $key
+     57Γûò      * @param  \Illuminate\Contracts\Support\MessageBag  $bag
+     58Γûò      * @return $this
+     59Γûò      */
+  Γ₧£  60Γûò     public function put($key, MessageBagContract $bag)
+     61Γûò     {
+     62Γûò         $this->bags[$key] = $bag;
+     63Γûò 
+     64Γûò         return $this;
+
+  [33m1   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\ViewErrorBag.php[39;22m:[39;1m60[39;22m
+  [33m2   [39m[39;1mvendor\livewire\livewire\src\Features\SupportValidation\SupportValidation.php[39;22m:[39;1m21[39;22m
+
+
+  [90mTests:[39m    [31;1m3 failed[39;22m[90m,[39m[39m [39m[33;1m1 skipped[39;22m[90m (0 assertions)[39m
+  [90mDuration:[39m [39m1.55s[39m
+

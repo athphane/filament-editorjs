@@ -74,7 +74,7 @@ class BlockRendererManager
         // Merge config with default config
         $blockConfig = array_merge($this->defaultConfig, $config);
 
-        return $renderer->render($block);
+        return $renderer->render($block, $blockConfig);
     }
 
     /**
@@ -92,7 +92,7 @@ class BlockRendererManager
                 $this->type = $type;
             }
 
-            public function render(array $block): string
+            public function render(array $block, array $config = []): string
             {
                 // For unknown blocks, just return the data as JSON (for debugging purposes)
                 return '<!-- Unknown block type: ' . $this->type . ' -->';

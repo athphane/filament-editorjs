@@ -1,7 +1,11 @@
-@tailwind components;
+@import '../../vendor/filament/filament/resources/css/theme.css';
+
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
 
 .editorjs-wrapper {
-    @apply border rounded-xl relative bg-white shadow-sm prose prose-sm dark:prose-invert border-gray-200 dark:bg-gray-900 dark:border-gray-600;
+    @apply relative bg-white prose prose-sm dark:prose-invert dark:bg-gray-900;
     max-width: unset;
 }
 

@@ -4,22 +4,23 @@
     $withBorder = $withBorder ?? false;
     $withBackground = $withBackground ?? false;
     $stretched = $stretched ?? false;
-    $config = $config ?? [];
 
     $imageClasses = collect([
-        'block mx-auto',
-        $withBorder ? 'border border-gray-200' : '',
-        $withBackground ? 'bg-gray-100 p-4' : '',
-        $stretched ? 'w-full max-w-none' : 'max-w-full',
+        'block mx-auto rounded-lg',
+        $withBorder ? 'border border-gray-200 dark:border-gray-800' : '',
+        $withBackground ? 'bg-gray-100 dark:bg-gray-900 p-4' : '',
+        $stretched ? 'w-full' : 'max-w-full',
     ])->filter()->join(' ');
 @endphp
 
-<div class="my-6">
+<figure class="my-10">
     @if($url)
         <img src="{{ $url }}" alt="{{ $caption ?: 'EditorJS Image' }}" class="{{ $imageClasses }}">
     @endif
 
     @if($caption)
-        <p class="text-center text-sm text-gray-500 mt-2">{{ $caption }}</p>
+        <figcaption class="text-center text-sm text-gray-500 mt-3 italic">
+            {{ $caption }}
+        </figcaption>
     @endif
-</div>
+</figure>

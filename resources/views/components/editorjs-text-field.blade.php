@@ -7,7 +7,7 @@
     :component="$getFieldWrapperView()"
     :field="$field"
 >
-    <div class="filament-editorjs">
+
         <div
             wire:ignore
             id="editorjs-{{ str_replace('.', '-', $statePath) }}"
@@ -27,5 +27,4 @@
             })"
         >
         </div>
-    </div>
 </x-dynamic-component>

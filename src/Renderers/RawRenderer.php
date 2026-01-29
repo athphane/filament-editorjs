@@ -4,18 +4,14 @@ namespace Athphane\FilamentEditorjs\Renderers;
 
 class RawRenderer extends BlockRenderer
 {
-    public function render(array $block): string
+    public function render(array $block, array $config = []): string
     {
         $data = $block['data'] ?? [];
         $html = $data['html'] ?? $data['message'] ?? $data['content'] ?? '';
 
-        // For security, we'll escape the HTML by default
-        // In a real implementation, you might want to provide an option to allow raw HTML
-        $escapedHtml = $this->escape($html);
-
         return view('filament-editorjs::renderers.raw', [
-            'html'   => $escapedHtml,
-            'config' => $this->config,
+            'html'   => $html,
+            'config' => array_merge($this->config, $config),
         ])->render();
     }
 

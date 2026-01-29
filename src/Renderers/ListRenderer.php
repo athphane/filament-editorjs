@@ -4,19 +4,16 @@ namespace Athphane\FilamentEditorjs\Renderers;
 
 class ListRenderer extends BlockRenderer
 {
-    public function render(array $block): string
+    public function render(array $block, array $config = []): string
     {
         $data = $block['data'] ?? [];
         $style = $data['style'] ?? 'unordered'; // Can be 'ordered' or 'unordered'
         $items = $data['items'] ?? [];
 
-        // Escape each list item to prevent XSS
-        $escapedItems = array_map([$this, 'escape'], $items);
-
         return view('filament-editorjs::renderers.list', [
-            'items'  => $escapedItems,
+            'items'  => $items,
             'style'  => $style,
-            'config' => $this->config,
+            'config' => array_merge($this->config, $config),
         ])->render();
     }
 

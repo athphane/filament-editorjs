@@ -4,7 +4,7 @@ namespace Athphane\FilamentEditorjs\Renderers;
 
 class InlineCodeRenderer extends BlockRenderer
 {
-    public function render(array $block): string
+    public function render(array $block, array $config = []): string
     {
         $data = $block['data'] ?? [];
         $code = $data['code'] ?? $data['message'] ?? $data['content'] ?? '';
@@ -14,7 +14,7 @@ class InlineCodeRenderer extends BlockRenderer
 
         return view('filament-editorjs::renderers.inline-code', [
             'code'   => $escapedCode,
-            'config' => $this->config,
+            'config' => array_merge($this->config, $config),
         ])->render();
     }
 

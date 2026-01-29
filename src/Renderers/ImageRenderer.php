@@ -4,7 +4,7 @@ namespace Athphane\FilamentEditorjs\Renderers;
 
 class ImageRenderer extends BlockRenderer
 {
-    public function render(array $block): string
+    public function render(array $block, array $config = []): string
     {
         $data = $block['data'] ?? [];
         $file = $data['file'] ?? [];
@@ -24,7 +24,7 @@ class ImageRenderer extends BlockRenderer
             'withBorder'     => $withBorder,
             'withBackground' => $withBackground,
             'stretched'      => $stretched,
-            'config'         => $this->config,
+            'config'         => array_merge($this->config, $config),
         ])->render();
     }
 

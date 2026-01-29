@@ -1,7 +1,5 @@
-@php
-    $config = $config ?? [];
-@endphp
-
-<div class="my-6 flex items-center">
-    <hr class="flex-grow border-t border-gray-300">
+<div class="flex justify-center my-10">
+    <div class="flex space-x-2 text-gray-300 dark:text-gray-600 font-bold text-2xl tracking-widest">
+        ***
+    </div>
 </div>
