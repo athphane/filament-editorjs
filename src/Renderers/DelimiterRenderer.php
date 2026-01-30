@@ -9,7 +9,7 @@ class DelimiterRenderer extends BlockRenderer
         $data = $block['data'] ?? [];
 
         return view('filament-editorjs::renderers.delimiter', [
-            ...$data
+            ...$data,
         ])->render();
     }
 
