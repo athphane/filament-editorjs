@@ -151,7 +151,12 @@ export function buildEditorJsTools(requestedTools, { imageUploader }) {
         const def = registry[toolKey]
         if (!def) return
 
-        const phpConfig = toolsConfig[toolKey] || {}
+        let phpConfig = toolsConfig[toolKey] || {}
+
+        // Transform PHP config if a transformer is provided
+        if (typeof def.transformConfig === 'function') {
+            phpConfig = def.transformConfig(phpConfig)
+        }
 
         if (typeof def === 'function') {
             enabled[toolKey] = {
@@ -159,15 +164,28 @@ export function buildEditorJsTools(requestedTools, { imageUploader }) {
                 config: phpConfig,
             }
         } else {
+            // Build the config by merging base config with PHP config
+            const mergedConfig = {
+                ...(def.config || {}),
+                ...phpConfig,
+            }
+
+            // If this tool needs the image uploader, inject it
+            if (def.needsImageUploader && imageUploader) {
+                mergedConfig.uploader = { uploadByFile: imageUploader }
+            }
+
             enabled[toolKey] = {
                 ...def,
-                config: {
-                    ...(def.config || {}),
-                    ...phpConfig,
-                },
+                config: mergedConfig,
             }
+
+            // Remove custom properties that the EditorJS tool doesn't understand
+            delete enabled[toolKey].transformConfig
+            delete enabled[toolKey].needsImageUploader
         }
     })
+
 
     return enabled
 }
