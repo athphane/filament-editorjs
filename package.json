@@ -37,5 +37,8 @@
         "prettier": "^3.1.0",
         "prettier-plugin-tailwindcss": "^0.6.0",
         "tailwindcss": "^4.1.18"
+    },
+    "dependencies": {
+        "@editorjs/checklist": "^1.6.0"
     }
 }

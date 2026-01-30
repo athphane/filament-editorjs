@@ -6,8 +6,10 @@ class DelimiterRenderer extends BlockRenderer
 {
     public function render(array $block, array $config = []): string
     {
+        $data = $block['data'] ?? [];
+
         return view('filament-editorjs::renderers.delimiter', [
-            'config' => array_merge($this->config, $config),
+            ...$data
         ])->render();
     }
 

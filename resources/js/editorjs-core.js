@@ -12,6 +12,7 @@ import InlineCode from '@editorjs/inline-code'
 import RawTool from '@editorjs/raw'
 import { StyleInlineTool } from 'editorjs-style'
 import DragDrop from 'editorjs-drag-drop'
+import Checklist from '@editorjs/checklist'
 
 window.filamentEditorJsTools = window.filamentEditorJsTools || {}
 
@@ -131,6 +132,13 @@ export function buildEditorJsTools(requestedTools, { imageUploader }) {
         }
     }
 
+    if (has('checklist')) {
+        enabled.checklist = {
+            class: Checklist
+        }
+    }
+
+
     // --- Dynamic tools registry ---
 
     const registry = window.filamentEditorJsTools
@@ -164,16 +172,7 @@ export function buildEditorJsTools(requestedTools, { imageUploader }) {
     return enabled
 }
 
-export function initEditorJsInstance({
-                                         element,
-                                         state,
-                                         placeholder,
-                                         readOnly,
-                                         tools,
-                                         minHeight,
-                                         onChange,
-                                         imageUploader,
-                                     }) {
+export function initEditorJsInstance({ element, state, placeholder, readOnly, tools, minHeight, onChange, imageUploader }) {
     const enabledTools = buildEditorJsTools(tools, { imageUploader })
 
     const instance = new EditorJS({

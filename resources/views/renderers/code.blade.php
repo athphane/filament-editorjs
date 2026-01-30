@@ -1,6 +1,12 @@
-@php
-    $code = $code ?? '';
-@endphp
+<div class="max-w-3xl mx-auto px-6">
+    @php
+        $code = $code ?? '';
+    @endphp
 
-<pre
-    class="bg-gray-100 dark:bg-gray-900 p-4 rounded-lg overflow-x-auto my-6 border border-gray-200 dark:border-gray-800"><code class="text-gray-800 dark:text-gray-200 font-mono text-sm leading-relaxed">{{ $code }}</code></pre>
+    <pre class="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto my-6">
+<code class="text-sm text-zinc-800 dark:text-zinc-200 whitespace-pre-wrap">
+{{ $code }}
+</code>
+</pre>
+
+</div>

@@ -90,6 +90,7 @@ class EditorjsTextField extends Field
     }
 
     #[ExposedLivewireMethod]
+    #[Renderless]
     public function processUploadedFileAndGetUrl(string $tempFileIdentifier): ?string
     {
         try {

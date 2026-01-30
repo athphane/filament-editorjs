@@ -10,8 +10,7 @@ class ParagraphRenderer extends BlockRenderer
         $content = $data['text'] ?? '';
 
         return view('filament-editorjs::renderers.paragraph', [
-            'content' => $content,
-            'config'  => array_merge($this->config, $config),
+            ...$data,
         ])->render();
     }
 

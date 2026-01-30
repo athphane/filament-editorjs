@@ -1,21 +1,17 @@
-@php
-    $items = $items ?? [];
-@endphp
+<div class="max-w-3xl mx-auto px-6">
+    @php
+        $items = $items ?? [];
+    @endphp
 
-<ul class="my-6 space-y-2">
-    @foreach($items as $item)
-        <li class="flex items-start">
-            <div class="flex-shrink-0 mt-1">
-                @if($item['checked'] ?? false)
-                    <span class="text-green-500">✓</span>
+    <ul class="list-disc ml-6 my-[1.25rem]">
+        @foreach($items as $item)
+            <li class="mb-2">
+                @if($item['checked'])
+                    <s>{!! $item['text'] !!}</s>
                 @else
-                    <span class="inline-block w-4 h-4 border border-gray-300 dark:border-gray-600 rounded"></span>
+                    {!! $item['text'] !!}
                 @endif
-            </div>
-            <div
-                class="ml-3 text-gray-700 dark:text-gray-300 {!! ($item['checked'] ?? false) ? 'line-through text-gray-400' : '' !!}">
-                {!! $item['content'] !!}
-            </div>
-        </li>
-    @endforeach
-</ul>
+            </li>
+        @endforeach
+    </ul>
+</div>

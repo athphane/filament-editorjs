@@ -16,7 +16,6 @@ class HeaderRenderer extends BlockRenderer
         return view('filament-editorjs::renderers.header', [
             'level'  => $level,
             'text'   => $text,
-            'config' => array_merge($this->config, $config),
         ])->render();
     }
 

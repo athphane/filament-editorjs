@@ -13,9 +13,9 @@
             id="editorjs-{{ str_replace('.', '-', $statePath) }}"
             {{ $attributes->merge($getExtraAttributes())->class(['editorjs-wrapper']) }}
             x-data="editorjs({
-                state: $wire.entangle('{{ $statePath }}'),
+                state: $wire.{{ $applyStateBindingModifiers("\$entangle('{$statePath}')") }},
                 statePath: '{{ $statePath }}',
-                placeholder: '{{ $getPlaceholder() }}',
+                placeholder: @js($getPlaceholder()),
                 readOnly: @js($isDisabled()),
                 tools: @js($getTools()),
                 minHeight: @js($getMinHeight()),

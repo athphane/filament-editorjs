@@ -1,13 +1,12 @@
-@php
-    $items = $items ?? [];
-    $style = $style ?? 'unordered';
+<div class="max-w-3xl mx-auto px-6">
+    @php
+        $tag = ($style === 'ordered') ? 'ol' : 'ul';
+        $listClasses = $tag === 'ol' ? 'list-decimal ml-6' : 'list-disc ml-6';
+    @endphp
 
-    $tag = ($style === 'ordered') ? 'ol' : 'ul';
-    $listClasses = $tag === 'ol' ? 'list-decimal ml-6' : 'list-disc ml-6';
-@endphp
-
-<{{ $tag }} class="{{ $listClasses }} mb-6 space-y-2 text-gray-800 dark:text-gray-200">
+    <{{ $tag }} @class([$listClasses])>
     @foreach($items as $item)
-        <li>{!! $item !!}</li>
+        <li class="mb-2">{!! $item !!}</li>
     @endforeach
 </{{ $tag }}>
+</div>
