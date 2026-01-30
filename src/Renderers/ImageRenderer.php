@@ -9,7 +9,7 @@ class ImageRenderer extends BlockRenderer
         $data = $block['data'] ?? [];
 
         return view('filament-editorjs::renderers.image', [
-           ...$data
+            ...$data,
         ])->render();
     }
 

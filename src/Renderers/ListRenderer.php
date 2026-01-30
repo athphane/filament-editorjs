@@ -9,7 +9,7 @@ class ListRenderer extends BlockRenderer
         $data = $block['data'] ?? [];
 
         return view('filament-editorjs::renderers.list', [
-            ...$data
+            ...$data,
         ])->render();
     }
 

@@ -9,7 +9,7 @@ class QuoteRenderer extends BlockRenderer
         $data = $block['data'] ?? [];
 
         return view('filament-editorjs::renderers.quote', [
-            ...$data
+            ...$data,
         ])->render();
     }
 
