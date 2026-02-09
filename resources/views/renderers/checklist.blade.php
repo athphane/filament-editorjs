@@ -3,7 +3,7 @@
         $items = $items ?? [];
     @endphp
 
-    <ul class="list-disc ml-6 my-[1.25rem]">
+    <ul class="list-disc ml-6 pt-[1rem]">
         @foreach($items as $item)
             <li class="mb-2">
                 @if($item['checked'])

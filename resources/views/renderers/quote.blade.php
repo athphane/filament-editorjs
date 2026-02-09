@@ -1,14 +1,17 @@
 <div class="max-w-3xl mx-auto px-6">
     @php
         $alignmentClasses = [
-            'left' => 'text-left border-l-4',
-            'center' => 'text-center border-y-2 py-4',
-            'right' => 'text-right border-r-4',
-        ][$alignment] ?? 'text-left border-l-4';
+            'left' => 'text-left pl-6 border-l-4',
+            'right' => 'text-right pr-6 border-r-4',
+        ][$alignment] ?? 'text-left pl-6 border-l-4';
     @endphp
 
     <blockquote>
-        <p class="{{ $alignmentClasses }}">
+        <p @class([
+            $alignmentClasses,
+            'mt-5'
+          ])
+        >
             {!! $text !!}
         </p>
 

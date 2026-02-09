@@ -4,22 +4,22 @@
         $text = $text ?? '';
 
         $headerClasses = [
-            1 => 'text-4xl font-extrabold mb-0 mt-10',
-            2 => 'text-3xl font-bold mb-0 mt-8',
-            3 => 'text-2xl font-bold mb-0 mt-6',
-            4 => 'text-xl font-bold mb-0 mt-4',
-            5 => 'text-lg font-bold mb-0 mt-4',
-            6 => 'text-base font-bold mb-0 mt-4',
+            1 => 'text-4xl font-extrabold',
+            2 => 'text-3xl font-bold',
+            3 => 'text-2xl font-bold',
+            4 => 'text-xl font-bold',
+            5 => 'text-lg font-bold',
+            6 => 'text-base font-bold',
         ][$level] ?? 'text-2xl font-bold mb-4 mt-6';
 
         $tag = 'h' . $level;
     @endphp
 
-    <{{ $tag }}
+<{{ $tag }}
     @class([
     $headerClasses,
     'text-zinc-800',
-    'my-[1.25rem] leading-[1.8]'
+    'pt-4'
 ])>
     {!! $text !!}
 </{{ $tag }}>

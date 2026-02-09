@@ -3,7 +3,7 @@
 @endphp
 
 <div class="max-w-3xl mx-auto px-6">
-    <div class="overflow-x-auto my-[1.25rem]">
+    <div class="overflow-x-auto pt-[1rem]">
         <table class="min-w-full divide-y divide-gray-200 border border-gray-200">
             <tbody class="divide-y divide-gray-200">
             @foreach($content as $row)
