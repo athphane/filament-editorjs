@@ -99,7 +99,7 @@ class FilamentEditorjsServiceProvider extends PackageServiceProvider
         });
     }
 
-    protected function getAssetPackageName(): ?string
+    public function getAssetPackageName(): ?string
     {
         return 'athphane/filament-editorjs';
     }
