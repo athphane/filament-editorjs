@@ -1,6 +1,6 @@
 <?php
 
-use Athphane\FilamentEditorjs\Tests\Models\Post;
+use Athphane\FilamentEditorjs\Tests\TestSupport\Models\Post;
 
 it('can get editorjs media collection name', function () {
     $post = new Post();

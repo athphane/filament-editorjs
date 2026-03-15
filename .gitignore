@@ -12,3 +12,6 @@ phpstan.neon
 testbench.yaml
 vendor
 .phpunit.cache
+coverage_output.txt
+coverage_report.txt
+test_coverage.txt
