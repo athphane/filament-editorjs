@@ -3,7 +3,7 @@
         $alignmentClasses = [
             'left' => 'text-left pl-6 border-l-4',
             'right' => 'text-right pr-6 border-r-4',
-        ][$alignment] ?? 'text-left pl-6 border-l-4';
+        ][$alignment ?? null] ?? 'text-left pl-6 border-l-4';
     @endphp
 
     <blockquote>
