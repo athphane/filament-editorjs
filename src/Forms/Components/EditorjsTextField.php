@@ -26,8 +26,6 @@ class EditorjsTextField extends Field
 
     protected string $view = 'filament-editorjs::components.editorjs-text-field';
 
-    protected ?int $mediaId = null;
-
     public static function make(?string $name = null): static
     {
         $instance = parent::make($name);
@@ -120,10 +118,8 @@ class EditorjsTextField extends Field
 
     /**
      * Render EditorJS content for display
-     *
-     * @param  string|array  $content
      */
-    public static function renderContent($content, array $config = []): string
+    public static function renderContent(array|string $content, array $config = []): string
     {
         return \Athphane\FilamentEditorjs\FilamentEditorjs::renderContent($content, $config);
     }
