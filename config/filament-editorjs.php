@@ -35,4 +35,11 @@ return [
         'image/svg+xml',
         'image/svg',
     ],
+
+    /**
+     * Reading time configuration.
+     */
+    'reading_time' => [
+        'words_per_minute' => 225,
+    ],
 ];

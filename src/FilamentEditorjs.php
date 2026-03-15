@@ -3,6 +3,7 @@
 namespace Athphane\FilamentEditorjs;
 
 use Athphane\FilamentEditorjs\Renderers\BlockRenderer;
+use Athphane\FilamentEditorjs\Support\EditorjsReadingTime;
 
 class FilamentEditorjs
 {
@@ -16,6 +17,26 @@ class FilamentEditorjs
         $manager = app('filament-editorjs-renderer');
 
         return $manager->renderContent($content, $config);
+    }
+
+    /**
+     * Calculate reading time for EditorJS content
+     *
+     * @param  string|array|null  $content
+     */
+    public static function readingTime($content, array $config = []): string
+    {
+        return EditorjsReadingTime::calculate($content, $config);
+    }
+
+    /**
+     * Count words for EditorJS content
+     *
+     * @param  string|array|null  $content
+     */
+    public static function countWords($content): int
+    {
+        return EditorjsReadingTime::countWords($content);
     }
 
     /**

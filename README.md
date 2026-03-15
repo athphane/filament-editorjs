@@ -114,16 +114,18 @@ This package allows you to customize the editor tools dynamically.
 You can add any Editor.js compatible tool by registering it in Javascript and then enabling it in PHP.
 
 #### 1. Register in Javascript
+
 Add your custom tool to the global `window.filamentEditorJsTools` registry:
 
 ```javascript
-import LinkTool from '@editorjs/link';
+import LinkTool from '@editorjs/link'
 
-window.filamentEditorJsTools = window.filamentEditorJsTools || {};
-window.filamentEditorJsTools.linkTool = LinkTool;
+window.filamentEditorJsTools = window.filamentEditorJsTools || {}
+window.filamentEditorJsTools.linkTool = LinkTool
 ```
 
 #### 2. Enable in PHP
+
 Use the `addPlugin` method on your field:
 
 ```php
@@ -171,6 +173,62 @@ public function boot()
 {
     FilamentEditorjs::addRenderer(new CustomBlockRenderer());
 }
+```
+
+### Word Count for Reading Time
+
+When creating a custom renderer, you can define how it contributes to the reading time calculation by implementing the `getWordCount()` method:
+
+```php
+use Athphane\FilamentEditorjs\Renderers\BlockRenderer;
+
+class CustomBlockRenderer extends BlockRenderer
+{
+    public function render(array $block): string
+    {
+        return view('renderers.custom-block', [
+            'data' => $block['data'],
+        ])->render();
+    }
+
+    public function getType(): string
+    {
+        return 'custom-block-type';
+    }
+
+    public function getWordCount(array $block): int
+    {
+        $text = $block['data']['content'] ?? '';
+        return str_word_count(strip_tags($text));
+    }
+}
+```
+
+### Calculating Reading Time
+
+You can calculate the reading time for your content:
+
+```php
+use Athphane\FilamentEditorjs\FilamentEditorjs;
+
+// Get reading time string (e.g., "5 min read")
+$readingTime = FilamentEditorjs::readingTime($post->content);
+
+// Get total word count
+$wordCount = FilamentEditorjs::countWords($post->content);
+```
+
+**Built-in Block Types:**
+
+- **paragraph, header, list, checklist, quote, code, table, inline-code**: Automatically count words from their text content
+- **image, delimiter, raw**: Return 0 words (no text content)
+
+Configure words per minute in `config/filament-editorjs.php`:
+
+```php
+'reading_time' => [
+    'words_per_minute' => 225, // Default
+],
 ```
 
 ---

@@ -17,4 +17,14 @@ class ListRenderer extends BlockRenderer
     {
         return 'list';
     }
+
+    public function getWordCount(array $block): int
+    {
+        $items = data_get($block, 'data.items', []);
+        $text = '';
+        foreach ($items as $item) {
+            $text .= ' ' . $item;
+        }
+        return str_word_count(strip_tags($text));
+    }
 }

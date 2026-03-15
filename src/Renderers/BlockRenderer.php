@@ -34,6 +34,14 @@ abstract class BlockRenderer
     }
 
     /**
+     * Get word count for reading time calculation
+     */
+    public function getWordCount(array $block): int
+    {
+        return 0;
+    }
+
+    /**
      * Escape HTML content to prevent XSS
      */
     protected function escape(string $content): string

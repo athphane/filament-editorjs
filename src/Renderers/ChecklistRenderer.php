@@ -17,4 +17,14 @@ class ChecklistRenderer extends BlockRenderer
     {
         return 'checklist';
     }
+
+    public function getWordCount(array $block): int
+    {
+        $items = data_get($block, 'data.items', []);
+        $text = '';
+        foreach ($items as $item) {
+            $text .= ' ' . data_get($item, 'text', '');
+        }
+        return str_word_count(strip_tags($text));
+    }
 }

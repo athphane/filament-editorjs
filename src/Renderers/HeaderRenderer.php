@@ -23,4 +23,12 @@ class HeaderRenderer extends BlockRenderer
     {
         return 'header';
     }
+
+    public function getWordCount(array $block): int
+    {
+        $text = data_get($block, 'data.message', '')
+            ?: data_get($block, 'data.content', '')
+            ?: data_get($block, 'data.text', '');
+        return str_word_count(strip_tags($text));
+    }
 }

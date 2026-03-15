@@ -22,4 +22,10 @@ class InlineCodeRenderer extends BlockRenderer
     {
         return 'inline-code';
     }
+
+    public function getWordCount(array $block): int
+    {
+        $text = data_get($block, 'data.code', '');
+        return str_word_count(strip_tags($text));
+    }
 }

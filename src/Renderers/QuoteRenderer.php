@@ -17,4 +17,14 @@ class QuoteRenderer extends BlockRenderer
     {
         return 'quote';
     }
+
+    public function getWordCount(array $block): int
+    {
+        $text = data_get($block, 'data.text', '');
+        $caption = data_get($block, 'data.caption', '');
+        if ($caption) {
+            $text .= ' ' . $caption;
+        }
+        return str_word_count(strip_tags($text));
+    }
 }

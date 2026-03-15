@@ -19,4 +19,16 @@ class TableRenderer extends BlockRenderer
     {
         return 'table';
     }
+
+    public function getWordCount(array $block): int
+    {
+        $rows = data_get($block, 'data.content', []);
+        $text = '';
+        foreach ($rows as $row) {
+            foreach ($row as $cell) {
+                $text .= ' ' . $cell;
+            }
+        }
+        return str_word_count(strip_tags($text));
+    }
 }
