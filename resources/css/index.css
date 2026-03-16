@@ -1,8 +1,6 @@
 @import '../../vendor/filament/filament/resources/css/theme.css';
 
 @import 'tailwindcss';
-@import './code-highlighting.css';
-
 @plugin "@tailwindcss/typography";
 
 
@@ -95,7 +93,7 @@
 List Item style
 */
 .cdx-list {
-    @apply pl-[1rem];
+    @apply pl-4;
 }
 
 /*
