@@ -29,6 +29,7 @@ class TableRenderer extends BlockRenderer
                 $text .= ' ' . $cell;
             }
         }
+
         return str_word_count(strip_tags($text));
     }
 }

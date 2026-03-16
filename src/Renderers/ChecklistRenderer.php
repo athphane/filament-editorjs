@@ -25,6 +25,7 @@ class ChecklistRenderer extends BlockRenderer
         foreach ($items as $item) {
             $text .= ' ' . data_get($item, 'text', '');
         }
+
         return str_word_count(strip_tags($text));
     }
 }

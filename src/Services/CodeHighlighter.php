@@ -2,7 +2,6 @@
 
 namespace Athphane\FilamentEditorjs\Services;
 
-use Log;
 use Spatie\ShikiPhp\Shiki;
 
 class CodeHighlighter
@@ -30,9 +29,9 @@ class CodeHighlighter
         array $deleteLines = [],
         array $focusLines = []
     ): string {
-        $theme = $theme ?? $this->defaultTheme;
+        $theme ??= $this->defaultTheme;
 
-        if (! $this->languageIsAvailable($language)) {
+        if ( ! $this->languageIsAvailable($language)) {
             $language = 'plaintext';
         }
 

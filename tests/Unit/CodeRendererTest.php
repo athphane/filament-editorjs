@@ -10,7 +10,7 @@ it('renders code block with language', function () {
     $block = [
         'type' => 'code',
         'data' => [
-            'code' => '<?php echo "Hello World"; ?>',
+            'code'         => '<?php echo "Hello World"; ?>',
             'languageCode' => 'php',
         ],
     ];
@@ -24,7 +24,7 @@ it('renders code block with custom theme', function () {
     $block = [
         'type' => 'code',
         'data' => [
-            'code' => 'const x = 1;',
+            'code'         => 'const x = 1;',
             'languageCode' => 'javascript',
         ],
     ];
@@ -39,8 +39,8 @@ it('renders code block with line highlighting', function () {
     $block = [
         'type' => 'code',
         'data' => [
-            'code' => "line 1\nline 2\nline 3",
-            'languageCode' => 'plaintext',
+            'code'           => "line 1\nline 2\nline 3",
+            'languageCode'   => 'plaintext',
             'highlightLines' => [1, 3],
         ],
     ];
@@ -54,9 +54,9 @@ it('renders code block with added lines', function () {
     $block = [
         'type' => 'code',
         'data' => [
-            'code' => "line 1\nline 2\nline 3",
+            'code'         => "line 1\nline 2\nline 3",
             'languageCode' => 'plaintext',
-            'addLines' => [2],
+            'addLines'     => [2],
         ],
     ];
 
@@ -69,9 +69,9 @@ it('renders code block with deleted lines', function () {
     $block = [
         'type' => 'code',
         'data' => [
-            'code' => "line 1\nline 2\nline 3",
+            'code'         => "line 1\nline 2\nline 3",
             'languageCode' => 'plaintext',
-            'deleteLines' => [2],
+            'deleteLines'  => [2],
         ],
     ];
 
@@ -84,9 +84,9 @@ it('renders code block with focused lines', function () {
     $block = [
         'type' => 'code',
         'data' => [
-            'code' => "line 1\nline 2\nline 3",
+            'code'         => "line 1\nline 2\nline 3",
             'languageCode' => 'plaintext',
-            'focusLines' => [2],
+            'focusLines'   => [2],
         ],
     ];
 
@@ -113,7 +113,7 @@ it('handles invalid languageCode gracefully', function () {
     $block = [
         'type' => 'code',
         'data' => [
-            'code' => 'some code',
+            'code'         => 'some code',
             'languageCode' => 'invalid-language-xyz',
         ],
     ];
@@ -127,7 +127,7 @@ it('handles empty code', function () {
     $block = [
         'type' => 'code',
         'data' => [
-            'code' => '',
+            'code'         => '',
             'languageCode' => 'plaintext',
         ],
     ];
@@ -141,7 +141,7 @@ it('shows language label when enabled', function () {
     $block = [
         'type' => 'code',
         'data' => [
-            'code' => 'const x = 1;',
+            'code'         => 'const x = 1;',
             'languageCode' => 'javascript',
         ],
     ];
@@ -156,7 +156,7 @@ it('hides language label when disabled', function () {
     $block = [
         'type' => 'code',
         'data' => [
-            'code' => 'const x = 1;',
+            'code'         => 'const x = 1;',
             'languageCode' => 'javascript',
         ],
     ];
@@ -171,7 +171,7 @@ it('hides language label for plaintext', function () {
     $block = [
         'type' => 'code',
         'data' => [
-            'code' => 'some plain text',
+            'code'         => 'some plain text',
             'languageCode' => 'plaintext',
         ],
     ];

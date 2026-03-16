@@ -47,8 +47,8 @@ return [
      * Code block configuration.
      */
     'code' => [
-        'default_theme' => 'github-light',
-        'line_highlighting' => true,
+        'default_theme'        => 'github-light',
+        'line_highlighting'    => true,
         'supported_line_modes' => ['highlight', 'add', 'delete', 'focus'],
     ],
 ];
