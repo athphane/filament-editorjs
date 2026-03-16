@@ -26,6 +26,7 @@ class InlineCodeRenderer extends BlockRenderer
     public function getWordCount(array $block): int
     {
         $text = data_get($block, 'data.code', '');
+
         return str_word_count(strip_tags($text));
     }
 }

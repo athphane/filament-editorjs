@@ -3,6 +3,7 @@
 namespace Athphane\FilamentEditorjs\Renderers;
 
 use Athphane\FilamentEditorjs\Services\CodeHighlighter;
+use Exception;
 
 class CodeRenderer extends BlockRenderer
 {
@@ -36,7 +37,7 @@ class CodeRenderer extends BlockRenderer
                 deleteLines: $deleteLines,
                 focusLines: $focusLines,
             );
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $highlightedCode = $this->fallbackHighlight($code);
         }
 
@@ -62,6 +63,7 @@ class CodeRenderer extends BlockRenderer
     public function getWordCount(array $block): int
     {
         $text = data_get($block, 'data.code', '');
+
         return str_word_count(strip_tags($text));
     }
 }

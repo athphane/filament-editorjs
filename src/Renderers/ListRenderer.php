@@ -25,6 +25,7 @@ class ListRenderer extends BlockRenderer
         foreach ($items as $item) {
             $text .= ' ' . $item;
         }
+
         return str_word_count(strip_tags($text));
     }
 }

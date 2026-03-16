@@ -22,6 +22,7 @@ class ParagraphRenderer extends BlockRenderer
     public function getWordCount(array $block): int
     {
         $text = data_get($block, 'data.text', '');
+
         return str_word_count(strip_tags($text));
     }
 }

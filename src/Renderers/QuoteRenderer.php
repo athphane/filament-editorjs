@@ -25,6 +25,7 @@ class QuoteRenderer extends BlockRenderer
         if ($caption) {
             $text .= ' ' . $caption;
         }
+
         return str_word_count(strip_tags($text));
     }
 }
