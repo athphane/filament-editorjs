@@ -1,12 +1,20 @@
 <div class="max-w-3xl mx-auto px-6">
     @php
         $code = $code ?? '';
+        $language = $language ?? 'plaintext';
+        $showLanguageLabel = $config['show_language_label'] ?? true;
     @endphp
 
-    <pre class="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto my-6">
-<code class="text-sm text-zinc-800 dark:text-zinc-200 whitespace-pre-wrap">
-{{ $code }}
-</code>
-</pre>
+    @if($showLanguageLabel && !empty($language) && $language !== 'plaintext')
+        <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-mono text-gray-500 dark:text-gray-400 uppercase">
+                {{ $language }}
+            </span>
+        </div>
+    @endif
+
+    <div class="code-block-wrapper my-6">
+        {!! $code !!}
+    </div>
 
 </div>

@@ -1,6 +1,8 @@
 @import '../../vendor/filament/filament/resources/css/theme.css';
 
-@import "tailwindcss";
+@import 'tailwindcss';
+@import './code-highlighting.css';
+
 @plugin "@tailwindcss/typography";
 
 

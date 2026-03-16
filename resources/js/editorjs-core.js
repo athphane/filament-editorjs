@@ -8,6 +8,7 @@ import Underline from '@editorjs/underline'
 import Quote from '@editorjs/quote'
 import Table from '@editorjs/table'
 import Code from '@editorjs/code'
+import CodeWithLanguage from './tools/code-with-language.js'
 import InlineCode from '@editorjs/inline-code'
 import RawTool from '@editorjs/raw'
 import { StyleInlineTool } from 'editorjs-style'
@@ -107,9 +108,11 @@ export function buildEditorJsTools(requestedTools, { imageUploader }) {
 
     if (has('code')) {
         enabled.code = {
-            class: Code,
-            shortcut: 'CMD+SHIFT+C',
-            config: toolsConfig.code,
+            class: CodeWithLanguage,
+            config: {
+                ...toolsConfig.code,
+                availableLanguages: window.availableLanguages || {},
+            },
         }
     }
 
@@ -134,17 +137,19 @@ export function buildEditorJsTools(requestedTools, { imageUploader }) {
 
     if (has('checklist')) {
         enabled.checklist = {
-            class: Checklist
+            class: Checklist,
         }
     }
-
 
     // --- Dynamic tools registry ---
 
     const registry = window.filamentEditorJsTools
 
     Object.keys(toolsConfig).forEach((toolKey) => {
-        if (enabled[toolKey] || (toolKey === 'inline-code' && enabled.inlineCode)) {
+        if (
+            enabled[toolKey] ||
+            (toolKey === 'inline-code' && enabled.inlineCode)
+        ) {
             return
         }
 
@@ -186,11 +191,19 @@ export function buildEditorJsTools(requestedTools, { imageUploader }) {
         }
     })
 
-
     return enabled
 }
 
-export function initEditorJsInstance({ element, state, placeholder, readOnly, tools, minHeight, onChange, imageUploader }) {
+export function initEditorJsInstance({
+    element,
+    state,
+    placeholder,
+    readOnly,
+    tools,
+    minHeight,
+    onChange,
+    imageUploader,
+}) {
     const enabledTools = buildEditorJsTools(tools, { imageUploader })
 
     const instance = new EditorJS({

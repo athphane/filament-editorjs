@@ -123,4 +123,44 @@ class EditorjsTextField extends Field
     {
         return \Athphane\FilamentEditorjs\FilamentEditorjs::renderContent($content, $config);
     }
+
+    /**
+     * Set the default theme for Shiki code highlighting
+     */
+    public function codeTheme(string $theme): static
+    {
+        return $this->withMeta(['code_theme' => $theme]);
+    }
+
+    /**
+     * Restrict available code languages
+     */
+    public function codeLanguages(array $languages): static
+    {
+        return $this->withMeta(['code_languages' => $languages]);
+    }
+
+    /**
+     * Enable or disable line highlighting in code blocks
+     */
+    public function enableLineHighlighting(bool $enabled = true): static
+    {
+        return $this->withMeta(['enable_line_highlighting' => $enabled]);
+    }
+
+    /**
+     * Show or hide language label in rendered code blocks
+     */
+    public function showLanguageLabel(bool $show = true): static
+    {
+        return $this->withMeta(['show_language_label' => $show]);
+    }
+
+    /**
+     * Enable or disable copy button in code blocks
+     */
+    public function enableCopyButton(bool $enabled = true): static
+    {
+        return $this->withMeta(['enable_copy_button' => $enabled]);
+    }
 }

@@ -39,6 +39,7 @@
         "tailwindcss": "^4.1.18"
     },
     "dependencies": {
-        "@editorjs/checklist": "^1.6.0"
+        "@editorjs/checklist": "^1.6.0",
+        "shiki": "^1.0.0"
     }
 }

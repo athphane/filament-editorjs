@@ -1,6 +1,8 @@
 @php
     $key = $getKey();
     $statePath = $getStatePath();
+    $languages = \Athphane\FilamentEditorjs\Support\LanguageRegistry::class;
+    $languageRegistry = app($languages);
 @endphp
 
 <x-dynamic-component
@@ -23,7 +25,8 @@
                 componentKey: @js($key),
                 imageMimeTypes: @js(config('filament-editorjs.image_mime_types')),
                 maxSize: 5242880,
-                canUpload: @js($recordExists())
+                canUpload: @js($recordExists()),
+                availableLanguages: @js($languageRegistry->getLanguages())
             })"
         >
         </div>

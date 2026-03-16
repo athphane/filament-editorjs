@@ -257,6 +257,163 @@ EditorjsTextField::make('content')->tools('pro')
 
 ---
 
+## 💻 Code Block Enhancements
+
+The package includes powerful code block functionality with language selection and syntax highlighting powered by [Shiki](https://github.com/shikijs/shiki).
+
+### Features
+
+- 🎨 **100+ Language Support**: Type any programming language for accurate syntax highlighting
+- 🌈 **Multiple Themes**: Choose from various syntax highlighting themes (github-light, github-dark, nord, etc.)
+- ✨ **Line Highlighting**: Mark specific lines as highlighted, added, deleted, or focused
+- 🌓 **Dark Mode Support**: Automatic theme switching based on system preferences
+- 🔙 **Backward Compatible**: Existing code blocks continue to work without modification
+- ✍️ **Smooth Experience**: Compact language input in top-right corner
+
+### Usage
+
+Code blocks work out of box with automatic syntax highlighting. Simply type your desired language in the small input field located in the top-right corner of the code block:
+
+```php
+EditorjsTextField::make('content')
+```
+
+### Configuration
+
+You can configure code highlighting behavior using the following methods:
+
+```php
+EditorjsTextField::make('content')
+    ->codeTheme('github-dark')           // Set syntax highlighting theme
+    ->codeLanguages(['php', 'js'])        // Restrict available languages (future enhancement)
+    ->showLanguageLabel(true)             // Show/hide language label
+    ->enableCopyButton(true)              // Enable copy button (future)
+    ->enableLineHighlighting(true)        // Enable line highlighting
+```
+
+### Language Selection
+
+When you insert a code block in the editor, you'll see a small text input in the top-right corner. Simply type your programming language there:
+
+- Type `php` for PHP code
+- Type `javascript` or `js` for JavaScript
+- Type `python` or `py` for Python code
+- Type any other language code (e.g., `go`, `rust`, `ruby`, etc.)
+
+The input is unobtrusive and allows you to smoothly see your code while specifying the language. Common language codes include:
+
+- **Web**: `javascript`, `typescript`, `html`, `css`, `php`, `vue`, `svelte`
+- **Systems**: `c`, `c++`, `rust`, `go`, `assembly`
+- **Scripting**: `python`, `ruby`, `bash`, `shell`, `powershell`
+- **Data**: `json`, `xml`, `yaml`, `toml`
+- **Databases**: `sql`, `plsql`, `sparql`
+
+### Line Highlighting
+
+You can mark specific lines with different visual states:
+
+```json
+{
+    "type": "code",
+    "data": {
+        "code": "const x = 1;\nconst y = 2;\nconst z = 3;",
+        "languageCode": "javascript",
+        "highlightLines": [1, 3],
+        "addLines": [2],
+        "deleteLines": [],
+        "focusLines": []
+    }
+}
+```
+
+**Available line modes:**
+
+- `highlightLines`: Yellow background for important lines
+- `addLines`: Green background for new lines
+- `deleteLines`: Red background for removed lines
+- `focusLines`: Blue background with ring for focus
+
+### Available Themes
+
+Shiki supports many VSCode themes. Popular options include:
+
+- `github-light` (default)
+- `github-dark`
+- `nord`
+- `vitesse-dark`
+- `one-dark-pro`
+- `monokai`
+- `dracula`
+- ...and many more!
+
+### Configuration File
+
+Update `config/filament-editorjs.php` to set global defaults:
+
+```php
+'code' => [
+    'default_theme' => 'github-light',
+    'line_highlighting' => true,
+    'supported_line_modes' => ['highlight', 'add', 'delete', 'focus'],
+],
+```
+
+### Backward Compatibility
+
+Existing code blocks without a `languageCode` will default to `plaintext` with basic formatting. The renderer gracefully handles missing data and falls back to safe HTML escaping.
+
+### Styling
+
+All code block styles are included in the main CSS file. You can customize the appearance by overriding Tailwind classes in your project:
+
+```css
+/* Custom code block styles */
+.code-block-wrapper {
+    /* Your custom styles */
+}
+
+.highlighted {
+    /* Custom highlight style */
+}
+```
+
+### Examples
+
+**Basic Code Block:**
+
+```
+Type "javascript" in top-right input
+→ Enter your code
+→ Gets syntax highlighted automatically
+```
+
+**Code with Line Highlights:**
+
+```
+Highlight lines 1 and 3
+→ Lines get yellow background
+→ Great for tutorials and explanations
+```
+
+**Dark Theme:**
+
+```
+Use in dark mode environment
+→ Shiki automatically switches theme
+→ Consistent with your design
+```
+
+**Multiple Languages:**
+
+```
+Type "php" for PHP code
+Type "python" for Python code
+Type "rust" for Rust code
+→ Each gets proper highlighting
+```
+
+---
+
 ## 🔄 Upgrading
 
 Please refer to the [Upgrade Guide](UPGRADE.md) when moving between major versions.

@@ -42,4 +42,13 @@ return [
     'reading_time' => [
         'words_per_minute' => 225,
     ],
+
+    /**
+     * Code block configuration.
+     */
+    'code' => [
+        'default_theme' => 'github-light',
+        'line_highlighting' => true,
+        'supported_line_modes' => ['highlight', 'add', 'delete', 'focus'],
+    ],
 ];
