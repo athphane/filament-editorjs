@@ -3,6 +3,7 @@ import EditorJS from '@editorjs/editorjs'
 import Header from '@editorjs/header'
 import ImageTool from '@editorjs/image'
 import Delimiter from '@editorjs/delimiter'
+import Paragraph from '@editorjs/paragraph'
 import List from '@editorjs/list'
 import Underline from '@editorjs/underline'
 import Quote from '@editorjs/quote'
@@ -35,6 +36,11 @@ export function buildEditorJsTools(requestedTools, { imageUploader }) {
     const has = (key) => Object.hasOwn(toolsConfig, key)
 
     // --- Built-ins ---
+
+    enabled.paragraph = {
+        class: Paragraph,
+        inlineToolbar: true
+    }
 
     if (has('header')) {
         enabled.header = {
