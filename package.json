@@ -12,6 +12,7 @@
     "devDependencies": {
         "@awcodes/filament-plugin-purge": "^1.1.2",
         "@calumk/editorjs-columns": "^0.3.1",
+        "@editorjs/checklist": "^1.6.0",
         "@editorjs/code": "^2.9.0",
         "@editorjs/delimiter": "^1.4.1",
         "@editorjs/editorjs": "^2.28.2",
@@ -39,7 +40,6 @@
         "tailwindcss": "^4.2.1"
     },
     "dependencies": {
-        "@editorjs/checklist": "^1.6.0",
         "shiki": "^1.0.0"
     }
 }
