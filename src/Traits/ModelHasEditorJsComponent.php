@@ -90,6 +90,9 @@ trait ModelHasEditorJsComponent
     public function findAndDeleteRemovedEditorJsMedia(): void
     {
         $content = $this->{$this->editorJsContentFieldName()};
+        if (is_null($content) || !is_array($content)) {
+            return;
+        }
 
         $media_currently_used_in_content = [];
 
