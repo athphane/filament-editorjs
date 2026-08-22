@@ -5,7 +5,7 @@ use Filament\Contracts\Plugin;
 use Filament\Panel;
 
 it('has correct plugin id', function () {
-    $plugin = new FilamentEditorjsPlugin();
+    $plugin = new FilamentEditorjsPlugin;
 
     expect($plugin->getId())->toBe('filament-editorjs');
 });
@@ -23,13 +23,13 @@ it('can get plugin instance', function () {
 })->skip('Plugin retrieval requires registration');
 
 it('implements plugin interface', function () {
-    $plugin = new FilamentEditorjsPlugin();
+    $plugin = new FilamentEditorjsPlugin;
 
     expect($plugin)->toBeInstanceOf(Plugin::class);
 });
 
 it('can register panel', function () {
-    $plugin = new FilamentEditorjsPlugin();
+    $plugin = new FilamentEditorjsPlugin;
     $panel = app(Panel::class);
 
     expect(function () use ($plugin, $panel) {

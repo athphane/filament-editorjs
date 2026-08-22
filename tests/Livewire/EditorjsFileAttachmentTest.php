@@ -9,11 +9,11 @@ it('verifies editorjs text field implements file attachments', function () {
     $field = EditorjsTextField::make('content');
 
     // Check that the field implements the expected file attachment functionality
-    expect(method_exists($field, 'handleFileAttachmentUpload'))->toBeTrue();
+    expect(method_exists($field, 'saveUploadedFileAttachment'))->toBeTrue();
 
     // Check that the field uses the HasFileAttachments trait
-    expect(method_exists($field, 'handleFileAttachmentUpload'))->toBeTrue();
-    expect(method_exists($field, 'handleUploadedAttachmentUrlRetrieval'))->toBeTrue();
+    expect(method_exists($field, 'saveUploadedFileAttachment'))->toBeTrue();
+    expect(method_exists($field, 'getFileAttachmentUrl'))->toBeTrue();
 });
 
 it('can test file attachment upload method', function () {
@@ -21,7 +21,7 @@ it('can test file attachment upload method', function () {
     // For now, we'll just verify the method exists
     $field = EditorjsTextField::make('content');
 
-    expect(method_exists($field, 'handleFileAttachmentUpload'))->toBeTrue();
+    expect(method_exists($field, 'saveUploadedFileAttachment'))->toBeTrue();
 })->skip('Testing file attachment upload requires a model with HasMedia implementation');
 
 it('can test file attachment url retrieval method', function () {
@@ -29,7 +29,7 @@ it('can test file attachment url retrieval method', function () {
     // For now, we'll just verify the method exists
     $field = EditorjsTextField::make('content');
 
-    expect(method_exists($field, 'handleUploadedAttachmentUrlRetrieval'))->toBeTrue();
+    expect(method_exists($field, 'getFileAttachmentUrl'))->toBeTrue();
 })->skip('Testing file attachment URL retrieval requires media in database');
 
 it('can render editorjs component in livewire', function () {

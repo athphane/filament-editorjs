@@ -53,7 +53,7 @@ it('can validate editorjs content', function () {
 
 it('can test file attachment functionality', function () {
     // This test verifies that the component implements HasFileAttachments
-    $component = new TestEditorjsComponent();
+    $component = new TestEditorjsComponent;
 
     // We can't directly test file uploads without a full implementation
     // But we can verify that the form field supports file attachments

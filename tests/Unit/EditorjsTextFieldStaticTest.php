@@ -5,8 +5,8 @@ use Athphane\FilamentEditorjs\Forms\Components\EditorjsTextField;
 it('verifies editorjs text field has file attachment methods', function () {
     $field = EditorjsTextField::make('content');
 
-    expect(method_exists($field, 'handleFileAttachmentUpload'))->toBeTrue();
-    expect(method_exists($field, 'handleUploadedAttachmentUrlRetrieval'))->toBeTrue();
+    expect(method_exists($field, 'saveUploadedFileAttachment'))->toBeTrue();
+    expect(method_exists($field, 'getFileAttachmentUrl'))->toBeTrue();
 });
 
 it('process uploaded file and get url', function () {
@@ -18,13 +18,13 @@ it('process uploaded file and get url', function () {
 it('can retrieve media by UUID', function () {
     $field = EditorjsTextField::make('content');
 
-    expect(method_exists($field, 'handleUploadedAttachmentUrlRetrieval'))->toBeTrue();
+    expect(method_exists($field, 'getFileAttachmentUrl'))->toBeTrue();
 })->skip('UUID retrieval requires database setup');
 
 it('can handle null UUID retrieval', function () {
     $field = EditorjsTextField::make('content');
 
-    $url = $field->handleUploadedAttachmentUrlRetrieval(null);
+    $url = $field->getFileAttachmentUrl(null);
 
     expect($url)->toBeNull();
 });
@@ -32,7 +32,7 @@ it('can handle null UUID retrieval', function () {
 it('can handle non-existent UUID retrieval', function () {
     $field = EditorjsTextField::make('content');
 
-    $url = $field->handleUploadedAttachmentUrlRetrieval('non-existent-uuid');
+    $url = $field->getFileAttachmentUrl('non-existent-uuid');
 
     expect($url)->toBeNull();
 });
@@ -40,7 +40,7 @@ it('can handle non-existent UUID retrieval', function () {
 it('can handle non-existent ID retrieval', function () {
     $field = EditorjsTextField::make('content');
 
-    $url = $field->handleUploadedAttachmentUrlRetrieval(999999);
+    $url = $field->getFileAttachmentUrl(999999);
 
     expect($url)->toBeNull();
 });

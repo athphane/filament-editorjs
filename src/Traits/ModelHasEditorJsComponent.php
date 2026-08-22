@@ -91,18 +91,30 @@ trait ModelHasEditorJsComponent
     {
         $content = $this->{$this->editorJsContentFieldName()};
 
-        $media_currently_used_in_content = [];
+        if (is_string($content)) {
+            $content = json_decode($content, true);
+        }
+
+        if ( ! is_array($content) || ! isset($content['blocks']) || ! is_array($content['blocks'])) {
+            return;
+        }
+
+        $mediaCurrentlyUsedInContent = [];
 
         // Go through all the content blocks and find the media IDs
-        foreach ($content['blocks'] as $content) {
-            if (data_get($content, 'type') === 'image') {
-                $media_currently_used_in_content[] = data_get($content, 'data.file.media_id');
+        foreach ($content['blocks'] as $block) {
+            if (data_get($block, 'type') === 'image') {
+                $mediaId = data_get($block, 'data.file.media_id');
+
+                if ($mediaId !== null) {
+                    $mediaCurrentlyUsedInContent[] = $mediaId;
+                }
             }
         }
 
         // Delete all the media in the collection that is not currently used in the content
         $this->media()
             ->where('collection_name', $this->editorjsMediaCollectionName())
-            ->whereNotIn('id', $media_currently_used_in_content)->delete();
+            ->whereNotIn('id', $mediaCurrentlyUsedInContent)->delete();
     }
 }

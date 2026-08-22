@@ -38,11 +38,11 @@ class CodeHighlighter
         $cache_key = "filament-editorjs.code_highlight_{$language}_{$theme}_" . md5($code) . '_' . implode('_', $highlightLines) . '_' . implode('_', $addLines) . '_' . implode('_', $deleteLines) . '_' . implode('_', $focusLines);
 
         // cache the highlighted code to improve performance on repeated renders of the same code snippet
-        return cache()->rememberForever($cache_key, function () use ($focusLines, $deleteLines, $addLines, $highlightLines, $language, $code) {
+        return cache()->rememberForever($cache_key, function () use ($theme, $focusLines, $deleteLines, $addLines, $highlightLines, $language, $code) {
             return Shiki::highlight(
                 code: $code,
                 language: $language,
-                theme: 'github-dark',
+                theme: $theme,
                 highlightLines: $this->lineHighlighting ? $highlightLines : [],
                 addLines: $this->lineHighlighting && in_array('add', $this->supportedLineModes) ? $addLines : [],
                 deleteLines: $this->lineHighlighting && in_array('delete', $this->supportedLineModes) ? $deleteLines : [],
@@ -53,28 +53,28 @@ class CodeHighlighter
 
     public function getAvailableLanguages(): array
     {
-        $shiki = new Shiki();
+        $shiki = new Shiki;
 
         return $shiki->getAvailableLanguages();
     }
 
     public function getAvailableThemes(): array
     {
-        $shiki = new Shiki();
+        $shiki = new Shiki;
 
         return $shiki->getAvailableThemes();
     }
 
     public function languageIsAvailable(string $language): bool
     {
-        $shiki = new Shiki();
+        $shiki = new Shiki;
 
         return $shiki->languageIsAvailable($language);
     }
 
     public function themeIsAvailable(string $theme): bool
     {
-        $shiki = new Shiki();
+        $shiki = new Shiki;
 
         return $shiki->themeIsAvailable($theme);
     }

@@ -27,62 +27,128 @@
     /* example value, adjust for your own use case */
 }
 
-.ce-toolbar__plus,
-.ce-toolbar__settings-btn {
-    @apply dark:text-gray-300 dark:hover:bg-gray-500;
+/*
+ * Dark mode overrides.
+ *
+ * Editor.js injects its own stylesheet at runtime, after this file has already
+ * been loaded. Every rule below is therefore scoped to `.dark` so that it gains
+ * enough specificity to reliably win over Editor.js's own single-class rules.
+ */
+.dark .ce-toolbar__plus,
+.dark .ce-toolbar__settings-btn {
+    @apply border-gray-600 bg-gray-800 text-gray-300;
 }
 
-.ce-popover {
-    @apply dark:bg-gray-800 dark:border-gray-600;
+.dark .ce-toolbar__plus:hover,
+.dark .ce-toolbar__plus--active,
+.dark .ce-toolbar__settings-btn:hover,
+.dark .ce-toolbar__settings-btn--active {
+    @apply bg-gray-700 text-gray-100;
 }
 
-.ce-popover-item__icon {
-    @apply dark:bg-transparent;
+/* Toolbox popover ("+" button menu) */
+.dark .ce-popover {
+    --color-background: var(--gray-800);
+    --color-border: var(--gray-600);
+    --color-text-primary: var(--gray-100);
+    --color-text-secondary: var(--gray-400);
+    --color-border-icon: rgba(255, 255, 255, .2);
+    --color-border-icon-disabled: rgba(255, 255, 255, .08);
+    --color-text-icon-active: #60a5fa;
+    --color-background-icon-active: rgba(96, 165, 250, .2);
+    --color-background-item-focus: rgba(96, 165, 250, .15);
+    --color-shadow-item-focus: rgba(96, 165, 250, .25);
+    --color-background-item-hover: var(--gray-700);
+    --color-background-item-confirm: #dc2626;
+    --color-background-item-confirm-hover: #b91c1c;
+    --color-shadow: rgba(0, 0, 0, .4);
 }
 
-.ce-popover-item {
-    @apply dark:hover:bg-gray-700 dark:text-white;
+.dark .ce-popover-item__icon {
+    background: var(--gray-900);
 }
 
-.ce-code__textarea {
-    @apply dark:bg-gray-800 dark:text-white;
+.dark .ce-popover-item--disabled {
+    @apply text-gray-500;
 }
 
-.ce-settings {
-    @apply dark:bg-gray-800 dark:text-white dark:border-gray-500;
+.dark .ce-popover__nothing-found-message {
+    @apply text-gray-400;
 }
 
-.ce-settings__button,
-.cdx-settings-button {
-    @apply dark:text-white dark:hover:bg-gray-500;
+/* Search field inside the toolbox popover */
+.dark .cdx-search-field {
+    background: rgba(255, 255, 255, .08);
+    border-color: rgba(255, 255, 255, .1);
 }
 
-.cdx-search-field__icon .icon {
-    @apply dark:text-white;
+.dark .cdx-search-field__icon svg,
+.dark .cdx-search-field__input {
+    @apply text-gray-300;
 }
 
-.cdx-search-field__input {
-    @apply dark:text-white dark:placeholder:text-gray-400;
+.dark .cdx-search-field__input::placeholder {
+    @apply text-gray-400;
 }
 
-.ce-popover__no-found {
-    @apply dark:text-gray-400;
+/* Inline formatting toolbar */
+.dark .ce-inline-toolbar {
+    @apply border-gray-600 bg-gray-800 text-gray-200;
 }
 
-.ce-inline-toolbar {
-    @apply dark:bg-gray-800 dark:border-gray-600;
+.dark .ce-inline-tool:hover {
+    @apply bg-gray-700;
 }
 
-.ce-inline-tool {
-    @apply dark:text-white dark:hover:bg-gray-500;
+.dark .ce-inline-tool--active {
+    color: #60a5fa;
 }
 
-.ce-inline-tool-input {
-    @apply block w-full transition duration-75 focus:ring-1 focus:ring-inset disabled:opacity-70 dark:bg-gray-700 dark:text-white border-gray-300 dark:border-gray-600;
+.dark .ce-inline-tool--focused {
+    background: rgba(96, 165, 250, .15) !important;
 }
 
-.ce-popover__container {
-    @apply dark:bg-gray-800 dark:border-gray-600;
+.dark .ce-inline-toolbar__dropdown:hover {
+    @apply bg-gray-700;
+}
+
+.dark .ce-inline-tool-input {
+    @apply border-gray-600 bg-gray-700 text-white;
+}
+
+/* Block settings (three-dots) and conversion toolbar */
+.dark .ce-settings {
+    @apply border-gray-600 bg-gray-800 text-white;
+}
+
+.dark .ce-settings__button,
+.dark .cdx-settings-button {
+    @apply text-white;
+}
+
+.dark .ce-settings__button:hover,
+.dark .cdx-settings-button:hover {
+    @apply bg-gray-700;
+}
+
+.dark .ce-conversion-toolbar {
+    @apply border-gray-600 bg-gray-800;
+}
+
+/* Code block tool */
+.code-tool-language-input {
+    @apply mb-2 block w-full rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-900 shadow-sm;
+}
+
+.dark .ce-code__textarea,
+.dark .cdx-input,
+.dark .code-tool-language-input {
+    @apply border-gray-600 bg-gray-800 text-white;
+}
+
+.dark .cdx-input::placeholder,
+.dark .code-tool-language-input::placeholder {
+    @apply text-gray-400;
 }
 
 .ce-block--stretched {

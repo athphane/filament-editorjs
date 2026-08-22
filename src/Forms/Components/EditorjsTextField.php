@@ -4,7 +4,6 @@ namespace Athphane\FilamentEditorjs\Forms\Components;
 
 use Athphane\FilamentEditorjs\Forms\Concerns\HasHeight;
 use Athphane\FilamentEditorjs\Forms\Concerns\HasTools;
-use Athphane\FilamentEditorjs\Traits\ModelHasEditorJsComponent;
 use Exception;
 use Filament\Forms\Components\Concerns\HasFileAttachments;
 use Filament\Forms\Components\Field;
@@ -45,24 +44,26 @@ class EditorjsTextField extends Field
      * @throws FileDoesNotExist
      * @throws FileIsTooBig
      */
-    public function handleFileAttachmentUpload(TemporaryUploadedFile $file): mixed
+    public function saveUploadedFileAttachment(TemporaryUploadedFile $file): mixed
     {
-        /** @var ModelHasEditorJsComponent $record */
         $record = $this->getRecord();
 
-        $media = $record->editJsSaveImageFromTempFile($file);
+        if ( ! $record || ! method_exists($record, 'editJsSaveImageFromTempFile')) {
+            return null;
+        }
+
+        /** @var \Illuminate\Database\Eloquent\Model $record */
+        $media = $record->editJsSaveImageFromTempFile($file); // @phpstan-ignore-line
 
         return $media->uuid;
     }
 
-    #[ExposedLivewireMethod]
-    #[Renderless]
-    public function handleUploadedAttachmentUrlRetrieval(mixed $file): ?string
+    public function getFileAttachmentUrl(mixed $file): ?string
     {
         $media = Media::where('uuid', $file)->first();
 
-        if ( ! $media) {
-            // Try to find media by ID if $file is an ID instead of UUID
+        if ( ! $media && is_numeric($file)) {
+            // Fall back to finding media by ID if an ID was passed instead of a UUID.
             $media = Media::find($file);
         }
 
@@ -101,14 +102,14 @@ class EditorjsTextField extends Field
             }
 
             // Process the temporary file to get UUID using existing method
-            $uuid = $this->handleFileAttachmentUpload($tempFile);
+            $file = $this->saveUploadedFileAttachment($tempFile);
 
-            if ( ! $uuid) {
+            if ( ! $file) {
                 return null;
             }
 
             // Now retrieve the media data using the UUID
-            return $this->handleUploadedAttachmentUrlRetrieval($uuid);
+            return $this->getFileAttachmentUrl($file);
         } catch (Exception $e) {
             Log::error('Error processing uploaded file: ' . $e->getMessage());
 
@@ -119,7 +120,7 @@ class EditorjsTextField extends Field
     /**
      * Render EditorJS content for display
      */
-    public static function renderContent(array|string $content, array $config = []): string
+    public static function renderContent(array|string|null $content, array $config = []): string
     {
         return \Athphane\FilamentEditorjs\FilamentEditorjs::renderContent($content, $config);
     }
@@ -129,7 +130,7 @@ class EditorjsTextField extends Field
      */
     public function codeTheme(string $theme): static
     {
-        return $this->withMeta(['code_theme' => $theme]);
+        return $this->meta('code_theme', $theme);
     }
 
     /**
@@ -137,7 +138,7 @@ class EditorjsTextField extends Field
      */
     public function codeLanguages(array $languages): static
     {
-        return $this->withMeta(['code_languages' => $languages]);
+        return $this->meta('code_languages', $languages);
     }
 
     /**
@@ -145,7 +146,7 @@ class EditorjsTextField extends Field
      */
     public function enableLineHighlighting(bool $enabled = true): static
     {
-        return $this->withMeta(['enable_line_highlighting' => $enabled]);
+        return $this->meta('enable_line_highlighting', $enabled);
     }
 
     /**
@@ -153,7 +154,7 @@ class EditorjsTextField extends Field
      */
     public function showLanguageLabel(bool $show = true): static
     {
-        return $this->withMeta(['show_language_label' => $show]);
+        return $this->meta('show_language_label', $show);
     }
 
     /**
@@ -161,6 +162,6 @@ class EditorjsTextField extends Field
      */
     public function enableCopyButton(bool $enabled = true): static
     {
-        return $this->withMeta(['enable_copy_button' => $enabled]);
+        return $this->meta('enable_copy_button', $enabled);
     }
 }

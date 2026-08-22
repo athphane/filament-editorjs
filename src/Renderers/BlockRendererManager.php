@@ -82,11 +82,11 @@ class BlockRendererManager
      */
     protected function getDefaultRenderer(string $type): BlockRenderer
     {
-        return new class($this->defaultConfig) extends BlockRenderer
+        return new class($this->defaultConfig, $type) extends BlockRenderer
         {
             private string $type;
 
-            public function __construct(array $config, string $type = 'unknown')
+            public function __construct(array $config, string $type)
             {
                 parent::__construct($config);
                 $this->type = $type;
@@ -94,7 +94,7 @@ class BlockRendererManager
 
             public function render(array $block, array $config = []): string
             {
-                // For unknown blocks, just return the data as JSON (for debugging purposes)
+                // For unknown blocks, return an HTML comment so the content is not silently lost.
                 return '<!-- Unknown block type: ' . $this->type . ' -->';
             }
 

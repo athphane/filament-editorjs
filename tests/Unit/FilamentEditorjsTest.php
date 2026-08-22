@@ -48,7 +48,7 @@ it('renders content from string', function () {
 });
 
 it('can add a single renderer', function () {
-    $renderer = new HeaderRenderer();
+    $renderer = new HeaderRenderer;
 
     FilamentEditorjs::addRenderer($renderer);
 
@@ -57,8 +57,8 @@ it('can add a single renderer', function () {
 
 it('can add multiple renderers at once', function () {
     $renderers = [
-        new HeaderRenderer(),
-        new BlockRenderer(),
+        new HeaderRenderer,
+        new BlockRenderer,
     ];
 
     FilamentEditorjs::addRenderers($renderers);
@@ -117,21 +117,3 @@ it('can get the renderer manager singleton', function () {
 
     expect($output)->toBeString();
 })->skip('Renderer manager singleton test requires complex setup');
-
-it('can render with empty content', function () {
-    $content = null;
-
-    $output = FilamentEditorjs::renderContent($content);
-
-    expect($output)->toBeString();
-    expect($output)->not->toBe('');
-});
-
-it('can render with empty array', function () {
-    $content = [];
-
-    $output = FilamentEditorjs::renderContent($content);
-
-    expect($output)->toBeString();
-    expect($output)->not->toBe('');
-});

@@ -83,17 +83,17 @@ class FilamentEditorjsServiceProvider extends PackageServiceProvider
             ]);
 
             // Register default renderers
-            $manager->addRenderer(new Renderers\HeaderRenderer());
-            $manager->addRenderer(new Renderers\ImageRenderer());
-            $manager->addRenderer(new Renderers\ListRenderer());
-            $manager->addRenderer(new Renderers\ParagraphRenderer());
-            $manager->addRenderer(new Renderers\QuoteRenderer());
-            $manager->addRenderer(new Renderers\CodeRenderer());
-            $manager->addRenderer(new Renderers\TableRenderer());
-            $manager->addRenderer(new Renderers\DelimiterRenderer());
-            $manager->addRenderer(new Renderers\RawRenderer());
-            $manager->addRenderer(new Renderers\InlineCodeRenderer());
-            $manager->addRenderer(new Renderers\ChecklistRenderer());
+            $manager->addRenderer(new Renderers\HeaderRenderer);
+            $manager->addRenderer(new Renderers\ImageRenderer);
+            $manager->addRenderer(new Renderers\ListRenderer);
+            $manager->addRenderer(new Renderers\ParagraphRenderer);
+            $manager->addRenderer(new Renderers\QuoteRenderer);
+            $manager->addRenderer(new Renderers\CodeRenderer);
+            $manager->addRenderer(new Renderers\TableRenderer);
+            $manager->addRenderer(new Renderers\DelimiterRenderer);
+            $manager->addRenderer(new Renderers\RawRenderer);
+            $manager->addRenderer(new Renderers\InlineCodeRenderer);
+            $manager->addRenderer(new Renderers\ChecklistRenderer);
 
             return $manager;
         });

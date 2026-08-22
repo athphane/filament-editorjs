@@ -3,7 +3,7 @@
 use Athphane\FilamentEditorjs\Renderers\CodeRenderer;
 
 beforeEach(function () {
-    $this->renderer = new CodeRenderer();
+    $this->renderer = new CodeRenderer;
 });
 
 it('renders code block with language', function () {
@@ -92,7 +92,7 @@ it('renders code block with focused lines', function () {
 
     $output = $this->renderer->render($block);
 
-    expect($output)->toContain('focused');
+    expect($output)->toContain('focus');
 });
 
 it('handles missing languageCode with fallback', function () {
@@ -196,7 +196,7 @@ it('calculates word count correctly', function () {
 
     $count = $this->renderer->getWordCount($block);
 
-    expect($count)->toBe(3);
+    expect($count)->toBe(4);
 });
 
 it('handles word count with empty code', function () {

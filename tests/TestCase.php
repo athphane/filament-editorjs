@@ -17,6 +17,7 @@ use Filament\Support\SupportServiceProvider;
 use Filament\Tables\TablesServiceProvider;
 use Filament\Widgets\WidgetsServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -26,6 +27,8 @@ use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
 
 class TestCase extends Orchestra
 {
+    use RefreshDatabase;
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -70,6 +73,11 @@ class TestCase extends Orchestra
 
         // Set up media library for testing
         Config::set('media-library.disk_name', 'public');
+        Config::set('media-library.image_optimizers', []);
+        Config::set('media-library.file_namer', \Spatie\MediaLibrary\Support\FileNamer\DefaultFileNamer::class);
+        Config::set('media-library.default_loading_attribute_value', 'lazy');
+        Config::set('media-library.queue_conversions_by_default', false);
+        Config::set('media-library.path_generator', \Spatie\MediaLibrary\Support\PathGenerator\DefaultPathGenerator::class);
 
         // Set up fake media disk
         Storage::fake('media');
